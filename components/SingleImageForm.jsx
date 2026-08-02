@@ -1,0 +1,78 @@
+'use client';
+
+import { useState } from 'react';
+import { upload } from '@vercel/blob/client';
+
+export default function SingleImageForm({ field, tab }) {
+  const [status, setStatus] = useState('idle'); // idle | uploading | error
+  const [errorMsg, setErrorMsg] = useState('');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const file = form.elements.image.files[0];
+
+    if (!file) {
+      setStatus('error');
+      setErrorMsg('कृपया फाईल निवडा.');
+      return;
+    }
+
+    setStatus('uploading');
+    setErrorMsg('');
+
+    try {
+      const blob = await upload(`uploads/site/${file.name}`, file, {
+        access: 'public',
+        handleUploadUrl: '/api/admin/blob-upload',
+      });
+
+      const res = await fetch('/api/admin/set-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ field, url: blob.url }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'सेव्ह करता आले नाही.');
+      }
+
+      window.location.href = `/admin/dashboard?tab=${tab}&flash=${encodeURIComponent(
+        'फोटो अपडेट झाला.'
+      )}&flashType=ok`;
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(err.message || 'अपलोड अयशस्वी झाले.');
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'flex-end' }}>
+        <div className="field" style={{ maxWidth: 260 }}>
+          <label style={{ fontSize: 12.5, fontWeight: 600 }}>नवीन फोटो निवडा</label>
+          <input type="file" name="image" accept=".jpg,.jpeg,.png,.webp,.gif" required disabled={status === 'uploading'} />
+        </div>
+        <button className="btn btn-primary" type="submit" disabled={status === 'uploading'}>
+          {status === 'uploading' ? 'अपलोड होत आहे...' : 'फोटो बदला'}
+        </button>
+      </div>
+      <p style={{ fontSize: 11.5, color: '#777', marginTop: 8 }}>कमाल आकार: 8MB</p>
+      {status === 'error' && (
+        <div
+          style={{
+            marginTop: 10,
+            padding: '10px 14px',
+            borderRadius: 10,
+            fontSize: 13,
+            background: '#fdecea',
+            color: '#b3261e',
+          }}
+        >
+          {errorMsg}
+        </div>
+      )}
+    </form>
+  );
+}

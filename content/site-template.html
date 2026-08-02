@@ -1,0 +1,3545 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/assets/apulki logo.png">
+<title>आपुलकी चॅरिटेबल ट्रस्ट | डोंबिवली, महाराष्ट्र</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700;900&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<style>
+:root {
+  --orange: #F57C00;
+  --orange-light: #FF9800;
+  --orange-dark: #E65100;
+  --blue: #0D6EBD;
+  --blue-light: #1976D2;
+  --blue-dark: #0A4F8A;
+  --green: #4CAF50;
+  --green-dark: #388E3C;
+  --white: #FFFFFF;
+  --grey-bg: #F7F8FA;
+  --grey-light: #ECECEC;
+  --text-dark: #1A1A2E;
+  --text-mid: #444;
+  --text-light: #777;
+  --radius: 16px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.14);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ─── NAVBAR ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+}
+
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(245,124,0,0.35);
+}
+
+.logo-text h1 {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--orange-dark);
+  line-height: 1.2;
+}
+
+.logo-text p {
+  font-size: 10px;
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--orange);
+  background: rgba(245,124,0,0.08);
+}
+
+.btn-donate-nav {
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  color: white !important;
+  padding: 10px 20px !important;
+  border-radius: 50px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 15px rgba(245,124,0,0.35);
+  transition: all 0.3s !important;
+}
+
+.btn-donate-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245,124,0,0.45) !important;
+  background: rgba(245,124,0,0.08) !important;
+  color: var(--orange) !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburger span {
+  width: 24px; height: 2px;
+  background: var(--text-dark);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ─── HERO ─── */
+.hero {
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url('assets/HERO\ SECTION\ IMAGE.jpg'); /* replace later */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Decorative pattern overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  max-width: 860px;
+  padding: 0 24px;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(8px);
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  animation: fadeInDown 0.8s ease both;
+}
+
+.hero-title {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(36px, 7vw, 80px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.9s ease 0.2s both;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.hero-title span {
+  color: var(--orange-light);
+}
+
+.hero-sub {
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.7;
+  opacity: 0.9;
+  max-width: 620px;
+  margin: 0 auto 36px;
+  animation: fadeInUp 1s ease 0.4s both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease 0.6s both;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  color: white;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(245,124,0,0.4);
+  transition: all 0.3s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(245,124,0,0.5);
+}
+
+.btn-outline {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.5);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-3px);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.7);
+  font-size: 12px;
+  animation: bounce 2s infinite;
+}
+
+.hero-scroll::before {
+  content: '';
+  width: 20px; height: 32px;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 12px;
+  position: relative;
+}
+
+.hero-scroll::after {
+  content: '';
+  width: 4px; height: 8px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 2px;
+  position: absolute;
+  bottom: 24px;
+  animation: scrollDot 2s infinite;
+}
+
+.hero-slide-dots {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background: white;
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* ─── QUICK STATS BAR ─── */
+.stats-bar {
+  background: var(--blue);
+  color: white;
+  padding: 20px 24px;
+}
+
+.stats-bar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  text-align: center;
+}
+
+.stat-item-bar h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--orange-light);
+}
+
+.stat-item-bar p {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+/* ─── SECTION HELPERS ─── */
+section {
+  padding: 50px 0px 100px;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: inline-block;
+  background: rgba(245,124,0,0.1);
+  color: var(--orange-dark);
+  padding: 5px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-label.blue {
+  background: rgba(13,110,189,0.1);
+  color: var(--blue-dark);
+}
+
+.section-label.green {
+  background: rgba(76,175,80,0.1);
+  color: var(--green-dark);
+}
+
+.section-title {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  color: var(--text-light);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+.section-header {
+  margin-bottom: 56px;
+}
+
+.divider {
+  width: 56px; height: 4px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-light));
+  border-radius: 2px;
+  margin: 16px 0;
+}
+
+.divider.blue {
+  background: linear-gradient(90deg, var(--blue), var(--blue-light));
+}
+
+/* ─── ABOUT ─── */
+.about-section { background: var(--grey-bg); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about-image-col {
+  position: relative;
+}
+
+.about-img-main {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  box-shadow: var(--shadow-hover);
+  overflow: hidden;
+  position: relative;
+}
+
+.about-img-main::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.4));
+}
+
+.about-img-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 2;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.about-badge {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 100px; height: 100px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 8px 24px rgba(245,124,0,0.4);
+  text-align: center;
+}
+
+.about-badge strong { font-size: 22px; font-weight: 700; line-height: 1; }
+.about-badge span { font-size: 10px; opacity: 0.9; }
+
+.about-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.value-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 4px solid var(--orange);
+  box-shadow: var(--shadow);
+}
+
+.value-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--orange-dark);
+  margin-bottom: 4px;
+}
+
+.value-card p {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* ─── OBJECTIVES ─── */
+.objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.obj-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+  border-top: 4px solid transparent;
+}
+
+.obj-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-top-color: var(--orange);
+}
+
+.obj-icon {
+  font-size: 36px;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.obj-card h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+/* ─── PROGRAMS ─── */
+.programs-section { background: var(--grey-bg); }
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.program-card {
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+}
+
+.program-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.program-header {
+  padding: 28px 24px 20px;
+  position: relative;
+}
+
+.program-icon-wrap {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.prog-blue .program-icon-wrap { background: rgba(13,110,189,0.1); }
+.prog-orange .program-icon-wrap { background: rgba(245,124,0,0.1); }
+.prog-red .program-icon-wrap { background: rgba(211,47,47,0.1); }
+.prog-green .program-icon-wrap { background: rgba(76,175,80,0.1); }
+.prog-teal .program-icon-wrap { background: rgba(0,150,136,0.1); }
+.prog-purple .program-icon-wrap { background: rgba(103,58,183,0.1); }
+.prog-yellow .program-icon-wrap { background: rgba(255,193,7,0.12); }
+
+.program-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.program-stripe {
+  height: 4px;
+  border-radius: 2px;
+}
+
+.prog-blue .program-stripe { background: var(--blue); }
+.prog-orange .program-stripe { background: var(--orange); }
+.prog-red .program-stripe { background: #D32F2F; }
+.prog-green .program-stripe { background: var(--green); }
+.prog-teal .program-stripe { background: #009688; }
+.prog-purple .program-stripe { background: #673AB7; }
+.prog-yellow .program-stripe { background: #FFC107; }
+
+.program-body {
+  padding: 20px 24px 28px;
+}
+
+.program-body ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.program-body li {
+  font-size: 13px;
+  color: var(--text-mid);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.program-body li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-size: 15px;
+  top: 2px;
+}
+
+#gallery .program-body li {
+  font-size: 18px;
+  text-align: left !important;
+}
+
+/* ─── IMPACT ─── */
+.impact-section {
+  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 50%, #1565C0 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.impact-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px; height: 500px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+
+.impact-section::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 350px; height: 350px;
+  background: rgba(245,124,0,0.08);
+  border-radius: 50%;
+}
+
+.impact-section .section-title { color: white; }
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.impact-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius);
+  padding: 36px 24px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.impact-card:hover {
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-4px);
+}
+
+.impact-num {
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 900;
+  color: var(--orange-light);
+  line-height: 1;
+  margin-bottom: 8px;
+  font-family: 'Noto Serif Devanagari', serif;
+}
+
+.impact-label {
+  font-size: 14px;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+.impact-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* ─── ACHIEVEMENTS ─── */
+.award-showcase {
+  background: linear-gradient(135deg, #FFF8E7, #FFF3D0);
+  border: 2px solid rgba(245,124,0,0.2);
+  border-radius: 24px;
+  padding: 48px;
+  margin-bottom: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.award-showcase::before {
+  content: '🏆';
+  position: absolute;
+  top: -20px;
+  right: 40px;
+  font-size: 120px;
+  opacity: 0.06;
+}
+
+.award-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.award-img {
+  width: 200px; height: 240px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  box-shadow: 0 12px 40px rgba(245,124,0,0.35);
+  flex-shrink: 0;
+}
+
+.award-badge-tag {
+  display: inline-block;
+  background: var(--orange);
+  color: white;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.award-title {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--orange-dark);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.award-recipient {
+  font-size: 16px;
+  color: var(--text-mid);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.award-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+  max-width: 540px;
+}
+
+.award-meta {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.award-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-mid);
+}
+
+/* Alternating award rows: odd rows = image left, even rows = image right */
+.award-grid.reverse {
+  grid-template-columns: 1fr auto;
+}
+
+/* Media box keeps every image at its own natural aspect ratio: it is never
+   stretched or cropped, only scaled down to fit inside the box below. */
+.award-media {
+  flex-shrink: 0;
+  align-self: center;
+  justify-self: center;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 12px 40px rgba(245,124,0,0.25);
+  max-width: 100%;
+  line-height: 0;
+}
+
+.award-media img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(380px, 100%);
+  max-height: 340px;
+  cursor: zoom-in;
+}
+
+.milestones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.milestone-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--orange);
+  transition: all 0.3s;
+}
+
+.milestone-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.milestone-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.milestone-card p {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* ─── TIMELINE ─── */
+.timeline-section { background: var(--grey-bg); }
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--blue), var(--orange));
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.timeline-item:nth-child(even) .timeline-year {
+  grid-column: 2;
+}
+
+.timeline-item:nth-child(even) .timeline-content-left {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.timeline-year {
+  background: var(--blue);
+  color: white;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 16px rgba(13,110,189,0.3);
+  flex-shrink: 0;
+}
+
+.timeline-content, .timeline-spacer {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.timeline-content h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.timeline-content ul {
+  list-style: none;
+}
+
+.timeline-content li {
+  font-size: 13px;
+  color: var(--text-light);
+  padding: 3px 0;
+  padding-left: 14px;
+  position: relative;
+}
+
+.timeline-content li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+}
+
+.timeline-spacer { background: transparent; box-shadow: none; }
+
+/* ─── VIDEO ─── */
+.video-section {
+  background: var(--text-dark);
+  color: white;
+  padding: 80px 24px;
+}
+
+.video-section .section-title { color: white; }
+.video-section .section-sub { color: rgba(255,255,255,0.65); }
+
+.video-player {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  background: #111;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  max-width: 840px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.video-thumb {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #1a237e, #0D6EBD);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.video-play-btn {
+  width: 80px; height: 80px;
+  background: rgba(245,124,0,0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: white;
+  box-shadow: 0 8px 32px rgba(245,124,0,0.5);
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+}
+
+.video-play-btn:hover {
+  transform: scale(1.1);
+  background: var(--orange);
+}
+
+.video-label {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  color: white;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* ─── GALLERY ─── */
+.gallery-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 2px solid var(--grey-light);
+  background: white;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-mid);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: white;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  background: #eee;
+}
+
+.gallery-item:nth-child(5n+1) { grid-row: span 2; }
+
+.gallery-thumb {
+  width: 100%;
+  padding-top: 75%;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-item:nth-child(5n+1) .gallery-thumb { padding-top: 140%; }
+
+.gallery-thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.gallery-item:hover .gallery-thumb img { transform: scale(1.07); }
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  gap: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.gallery-overlay span { font-size: 28px; opacity: 0; transition: all 0.3s; transform: scale(0.5); }
+.gallery-overlay p { font-size: 13px; font-weight: 600; opacity: 0; transition: all 0.3s 0.05s; transform: translateY(8px); }
+
+.gallery-item:hover .gallery-overlay {
+  background: rgba(13,110,189,0.75);
+}
+
+.gallery-item:hover .gallery-overlay span { opacity: 1; transform: scale(1); }
+.gallery-item:hover .gallery-overlay p { opacity: 1; transform: translateY(0); }
+
+/* Gallery colors */
+.gc-1 { background: linear-gradient(135deg, #0D6EBD, #1976D2); }
+.gc-2 { background: linear-gradient(135deg, #F57C00, #E65100); }
+.gc-3 { background: linear-gradient(135deg, #D32F2F, #B71C1C); }
+.gc-4 { background: linear-gradient(135deg, #4CAF50, #2E7D32); }
+.gc-5 { background: linear-gradient(135deg, #009688, #00796B); }
+.gc-6 { background: linear-gradient(135deg, #673AB7, #512DA8); }
+.gc-7 { background: linear-gradient(135deg, #FFC107, #F9A825); }
+.gc-8 { background: linear-gradient(135deg, #0D47A1, #1565C0); }
+
+
+.video-carousel-wrapper{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.video-carousel{
+  overflow: hidden;
+}
+
+.video-track{
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s ease;
+}
+
+.video-card{
+  flex: 0 0 calc((100% - 48px) / 3);
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.video-card video{
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  display: block;
+}
+
+.video-caption{
+  padding: 14px;
+  font-size: 14px;
+  color: rgba(255,255,255,.8);
+  text-align: center;
+}
+
+.video-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10;
+  transition: .2s;
+}
+
+.video-nav:hover{
+  background: var(--orange);
+}
+
+.video-nav:disabled{
+  opacity: .3;
+  cursor: not-allowed;
+}
+
+.video-prev{
+  left: -24px;
+}
+
+.video-next{
+  right: -24px;
+}
+
+@media(max-width:768px){
+  .video-card{
+    flex: 0 0 100%;
+  }
+
+  .video-prev{
+    left: 0;
+  }
+
+  .video-next{
+    right: 0;
+  }
+}
+/* ─── VOLUNTEER ─── */
+.volunteer-section { background: var(--grey-bg); }
+
+.volunteer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.volunteer-info h3 {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-dark);
+}
+
+.volunteer-info p {
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.volunteer-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.perk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.perk-icon {
+  width: 36px; height: 36px;
+  background: rgba(245,124,0,0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.perk-item p {
+  font-size: 14px;
+  margin: 0;
+  padding-top: 8px;
+}
+
+.form-card {
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: var(--shadow-hover);
+}
+
+.form-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text-dark);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mid);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--grey-light);
+  border-radius: 10px;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  transition: border-color 0.2s;
+  outline: none;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--orange);
+}
+
+.form-group textarea { resize: vertical; min-height: 90px; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  transition: all 0.3s;
+  margin-top: 4px;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245,124,0,0.4);
+}
+
+/* ─── DONATION ─── */
+.donation-section {
+  background: linear-gradient(135deg, #FFF8E7, #FFF3D0, #FFFFFF);
+}
+
+.donation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.donation-tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tier-card {
+  background: white;
+  border: 2px solid var(--grey-light);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tier-card:hover, .tier-card.selected {
+  border-color: var(--orange);
+  background: rgba(245,124,0,0.05);
+}
+
+.tier-amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--orange-dark);
+  margin-bottom: 4px;
+}
+
+.tier-label {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.donation-payment {
+  background: white;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.donation-payment h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text-dark);
+}
+
+.qr-box {
+  width: 160px; height: 160px;
+  background: var(--grey-bg);
+  border: 2px dashed var(--grey-light);
+  border-radius: 16px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.bank-detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--grey-light);
+  font-size: 13px;
+}
+
+.bank-detail-row:last-child { border-bottom: none; }
+
+.bank-detail-row strong {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.bank-detail-row span { color: var(--text-light); }
+
+.upi-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--grey-bg);
+  border: 1px solid var(--grey-light);
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-top: 16px;
+}
+
+/* ─── CONTACT ─── */
+.contact-section { background: var(--grey-bg); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 48px;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-card-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.cc-orange { background: rgba(245,124,0,0.1); }
+.cc-blue { background: rgba(13,110,189,0.1); }
+.cc-green { background: rgba(76,175,80,0.1); }
+
+.contact-card h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-card p {
+  font-size: 14px;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.social-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.social-btn {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid var(--grey-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--orange);
+}
+
+.map-placeholder {
+  border-radius: 20px;
+  overflow: hidden;
+  height: 260px;
+  background: linear-gradient(135deg, #e8f4fd, #b3d9f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+
+.whatsapp-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  justify-content: center;
+}
+
+.whatsapp-btn:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--text-dark);
+  color: rgba(255,255,255,0.75);
+  padding: 64px 24px 24px;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand .logo-text h1 { color: var(--orange-light); font-size: 18px; }
+.footer-brand .logo-text p { color: rgba(255,255,255,0.5); }
+
+.footer-brand p {
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 16px 0;
+  color: rgba(255,255,255,0.6);
+}
+
+.footer-quote {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 15px;
+  color: var(--orange-light);
+  font-style: italic;
+  border-left: 3px solid var(--orange);
+  padding-left: 14px;
+  margin-top: 16px;
+}
+
+.footer-col h4 {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col li {
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--orange-light); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+@keyframes scrollDot {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(12px); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── MOBILE MENU ─── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0; right: 0;
+  background: white;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  z-index: 999;
+  padding: 20px;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  padding: 12px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.mobile-menu a:hover {
+  background: rgba(245,124,0,0.08);
+  color: var(--orange);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .objectives-grid { grid-template-columns: repeat(3, 1fr); }
+  .programs-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  section { padding: 56px 20px; }
+
+  .about-grid,
+  .volunteer-grid,
+  .donation-grid,
+  .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+
+  .objectives-grid { grid-template-columns: repeat(2, 1fr); }
+  .programs-grid { grid-template-columns: 1fr; }
+  .impact-grid { grid-template-columns: repeat(2, 1fr); }
+  .milestones-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item:nth-child(5n+1) { grid-row: span 1; }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .about-values { grid-template-columns: 1fr; }
+  .award-grid,
+  .award-grid.reverse { grid-template-columns: 1fr; gap: 24px; }
+  .award-img { width: 100%; max-width: 200px; }
+  /* on a single column always show the photo first, whichever side it sits on */
+  .award-grid.reverse .award-media { order: -1; }
+  .award-media { justify-self: start; }
+  .award-media img { max-height: 300px; }
+  .form-row { grid-template-columns: 1fr; }
+  .donation-tiers { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  .timeline::before { left: 30px; }
+  .timeline-item {
+    grid-template-columns: 60px 1fr;
+  }
+  .timeline-spacer { display: none; }
+  .timeline-item:nth-child(even) .timeline-content { grid-column: 2; }
+  .timeline-item:nth-child(even) .timeline-content-left { display: none; }
+}
+
+.video-carousel-wrapper{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.video-carousel{
+  overflow: hidden;
+}
+
+.video-track{
+  display: flex;
+  gap: 24px;
+  transition: transform .5s ease;
+}
+
+.video-card{
+  flex: 0 0 calc((100% - 48px)/3);
+  background: rgba(255,255,255,.05);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+
+.video-card video{
+  width: 100%;
+  aspect-ratio: 9/16;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+.video-caption{
+  padding: 14px;
+  color: rgba(255,255,255,.85);
+  font-size: 14px;
+  text-align: center;
+}
+
+.video-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  transition: .2s;
+}
+
+.video-nav:hover{
+  background: var(--orange);
+}
+
+.video-nav:disabled{
+  opacity: .25;
+  cursor: not-allowed;
+}
+
+.video-prev{
+  left: -25px;
+}
+
+.video-next{
+  right: -25px;
+}
+
+@media(max-width:768px){
+
+  .video-card{
+    flex: 0 0 100%;
+  }
+
+  .video-prev{
+    left: 0;
+  }
+
+  .video-next{
+    right: 0;
+  }
+}
+
+.video-wrapper{
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+}
+
+.video-container{
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+}
+
+.video-container::-webkit-scrollbar{
+  display:none;
+}
+
+.video-card{
+  flex: 0 0 calc((90% - 48px)/3);
+  scroll-snap-align: start;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+}
+
+.video-card video{
+  width: 100%;
+  height: 90%;
+  aspect-ratio: 9/16;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+.video-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.video-card{
+  top: 10px ;
+ font-size: 12px ;
+ margin-top: 28px!important;
+
+}
+
+.prev{
+  left: -25px;
+}
+
+.next{
+  right: -25px;
+}
+
+@media(max-width:768px){
+
+  .video-card{
+    flex: 0 0 100%;
+  }
+
+  .prev{ left:0; }
+  .next{ right:0; }
+
+}
+
+.initiative-panel{
+  text-align:center;
+}
+
+.initiative-title{
+  font-size:32px;
+  margin-bottom:16px;
+  color:var(--text-dark);
+}
+
+.initiative-desc{
+  max-width:800px;
+  margin:0 auto 40px;
+  color:var(--text-light);
+  line-height:1.8;
+}
+
+.initiative-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-bottom:40px;
+}
+
+.initiative-image-card{
+  text-align:center;
+}
+
+.initiative-image-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:var(--shadow);
+}
+
+.initiative-image-card p{
+  margin-top:12px;
+  font-size:14px;
+  color:var(--text-mid);
+  line-height:1.5;
+}
+
+.initiative-highlights{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:flex-start;
+  margin-left: 20px;
+}
+
+
+
+.gallery-filters{
+  justify-content:center;
+}
+
+.section-header{
+  text-align:center;
+}
+
+.section-header .divider{
+  margin:16px auto;
+}
+
+@media(max-width:768px){
+
+  .initiative-gallery{
+    grid-template-columns:1fr;
+  }
+
+  .initiative-image-card img{
+    height:220px;
+  }
+  .initiative-highlights{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:flex-start;
+  margin-left: 20px;
+}
+}
+
+/* ─── AMCHE KARYAKARTE ─── */
+
+.karyakarte-section{
+  padding: 80px 24px;
+  background: #fff;
+}
+
+.karyakarte-wrapper{
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.karyakarte-title{
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(30px,4vw,48px);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 40px;
+}
+
+.karyakarte-image{
+  width: 85%;
+  margin: 0 auto;
+    border-radius: 24px;
+  border: 2px solid var(--orange-light);
+    box-shadow: var(--orange-light);
+
+      box-shadow:
+    0 0 0 2px rgba(255,152,0,0.15),
+    0 12px 30px rgba(255,152,0,0.25),
+    0 24px 60px rgba(255,152,0,0.15);
+
+}
+
+.karyakarte-image img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  box-shadow: var(--orange);
+  border: var(--orange-light);
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+  .karyakarte-section{
+    padding: 60px 20px;
+  }
+
+  .karyakarte-image{
+    width: 100%;
+  }
+
+  .karyakarte-title{
+    margin-bottom: 24px;
+  }
+
+}
+
+/* Uniform grid. Landscape images fill the tile (as before).
+   Portrait images are shown fully (contained) over a blurred,
+   zoomed fill of the same image, so nothing gets cropped. */
+.initiative-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin:0 auto 40px;
+  max-width:1100px;
+}
+
+.initiative-image-card{
+  position:relative;
+  aspect-ratio:4 / 3;
+  border-radius:14px;
+  overflow:hidden;
+  background:#0d1a2e;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+
+.initiative-image-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-hover);
+}
+
+/* blurred, zoomed fill - only shown behind portrait images */
+.initiative-image-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background-image:var(--bg);
+  background-size:cover;
+  background-position:center;
+  filter:blur(22px) brightness(.82);
+  transform:scale(1.25);
+  opacity:0;
+  transition:opacity .3s ease;
+}
+
+.initiative-image-card.is-portrait::before{ opacity:1; }
+
+/* the photo itself */
+.initiative-image-card img{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;          /* landscape: fill the tile, as earlier */
+  transition:transform .55s ease;
+}
+
+.initiative-image-card.is-portrait img{
+  object-fit:contain;        /* portrait: show entirely, centered */
+}
+
+.initiative-image-card:hover img{ transform:scale(1.05); }
+
+/* caption sits on a gradient scrim so it's readable on any image */
+.initiative-image-card p{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  z-index:3;
+  margin:0;
+  padding:34px 16px 14px;
+  font-size:14px;
+  font-weight:600;
+  line-height:1.45;
+  text-align:left;
+  color:#fff;
+  background:linear-gradient(to top, rgba(13,26,46,.85) 0%, rgba(13,26,46,.45) 45%, rgba(13,26,46,0) 100%);
+  transform:translateY(6px);
+  opacity:.92;
+  transition:transform .35s ease, opacity .35s ease;
+}
+
+.initiative-image-card:hover p{
+  transform:translateY(0);
+  opacity:1;
+}
+
+/* subtle accent bar that grows on hover */
+.initiative-image-card::after{
+  content:'';
+  position:absolute;
+  left:0; bottom:0;
+  height:4px; width:0;
+  z-index:2;
+  background:linear-gradient(90deg, var(--orange), var(--orange-light));
+  transition:width .4s ease;
+}
+
+.initiative-image-card:hover::after{
+  width:100%;
+}
+/* ── Lightbox: pin controls to the viewport so they never shift
+      when the image size changes ── */
+#lightbox button[onclick*="prevImg"],
+#lightbox button[onclick*="nextImg"]{
+  position:fixed !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  left:auto; right:auto;
+  width:48px !important;
+  height:48px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:26px !important;
+  z-index:10000 !important;
+}
+#lightbox button[onclick*="prevImg"]{ left:24px !important; }
+#lightbox button[onclick*="nextImg"]{ right:24px !important; }
+#lightbox button[onclick*="closeLightbox"]{
+  position:fixed !important;
+  top:24px !important;
+  right:24px !important;
+  z-index:10000 !important;
+}
+/* single-image view (About / Karyakarte) hides the arrows */
+#lightbox.single button[onclick*="prevImg"],
+#lightbox.single button[onclick*="nextImg"]{ display:none !important; }
+
+.material-symbols-outlined{
+  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
+  font-size:1em; line-height:1; vertical-align:middle;
+}
+.prog-blue   .program-icon-wrap .material-symbols-outlined{color:#0D6EBD}
+.prog-orange .program-icon-wrap .material-symbols-outlined{color:#F57C00}
+.prog-red    .program-icon-wrap .material-symbols-outlined{color:#D32F2F}
+.prog-green  .program-icon-wrap .material-symbols-outlined{color:#4CAF50}
+.prog-teal   .program-icon-wrap .material-symbols-outlined{color:#009688}
+.prog-yellow .program-icon-wrap .material-symbols-outlined{color:#FFA000}
+.impact-icon .material-symbols-outlined{color:#fff}
+.perk-icon   .material-symbols-outlined{color:#F57C00}
+.cc-orange   .material-symbols-outlined{color:#F57C00}
+.cc-blue     .material-symbols-outlined{color:#0D6EBD}
+.cc-green    .material-symbols-outlined{color:#4CAF50}
+.qr-box      .material-symbols-outlined{color:#F57C00}
+.upi-chip    .material-symbols-outlined{color:#F57C00}
+.map-placeholder .material-symbols-outlined{color:#0D6EBD}
+
+/* Gallery highlights card: icon + title side by side, text left */
+.initiative-highlights .program-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px 16px;
+}
+
+.initiative-highlights .program-icon-wrap {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.initiative-highlights .program-header h3 {
+  margin-bottom: 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+.initiative-highlights .program-body {
+  text-align: left;
+}
+.initiative-highlights .program-card {
+  width: 95%;
+}
+.initiative-highlights {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.initiative-highlights .program-card {
+  width: 100%;
+}
+.initiative-highlights {
+  margin-top: 8px;
+  width: 100%;
+  text-align: left;
+}
+
+.initiative-highlights .program-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+.initiative-highlights {
+  margin-top: 8px;
+  display: block;
+  width: 100%;
+}
+
+.initiative-highlights .program-card {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.initiative-highlights .program-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px 16px;
+}
+
+.initiative-highlights .program-icon-wrap {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.initiative-highlights .program-header h3 {
+  margin-bottom: 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+.initiative-highlights .program-body {
+  text-align: left;
+}
+.impact-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius);
+  padding: 27px 18px;   /* was 36px 24px */
+  text-align: center;
+  transition: all 0.3s;
+}
+.impact-num {
+  font-size: clamp(30px, 3.75vw, 45px);   /* was clamp(40px, 5vw, 60px) */
+  font-weight: 900;
+  color: var(--orange-light);
+  line-height: 1;
+  margin-bottom: 8px;
+  font-family: 'Noto Serif Devanagari', serif;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="assets/transparewnt logo.png" alt="आपुलकी लोगो" style="height:50px;width:auto;object-fit:contain;">
+      <div class="logo-text">
+        <h1>आपुलकी चॅरिटेबल ट्रस्ट</h1>
+        <p>डोंबिवली, महाराष्ट्र | Est. 2023</p>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">आपुलकी बद्दल</a></li>
+      <li><a href="#gallery">गॅलरी</a></li>
+      <li><a href="#impact">परिणाम</a></li>
+      <li><a href="#achievements">गौरव</a></li>
+      <li><a href="#video">व्हिडिओ</a></li>
+      <li><a href="#karyakarte">कार्यकर्ते</a></li>
+      <li><a href="#volunteer">स्वयंसेवक</a></li>
+      <li><a href="#donate" class="btn-donate-nav"> <span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">favorite</span>देणगी द्या</a></li>
+      <li><a href="#contact">संपर्क</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">आपुलकी बद्दल</a>
+  <a href="#gallery" onclick="closeMenu()">गॅलरी</a>
+  <a href="#impact" onclick="closeMenu()">परिणाम</a>
+  <a href="#achievements" onclick="closeMenu()">गौरव आणि सन्मान</a>
+  <a href="#video" onclick="closeMenu()">व्हिडिओ</a>
+  <a href="#karyakarte" onclick="closeMenu()">आमचे कार्यकर्ते</a>
+  <a href="#volunteer" onclick="closeMenu()">स्वयंसेवक</a>
+  <a href="#donate" onclick="closeMenu()">देणगी द्या</a>
+  <a href="#contact" onclick="closeMenu()">संपर्क</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home" style="padding: 60px 24px 80px;!important">
+ 
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+<div class="hero-eyebrow"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">trophy</span> राज्यस्तरीय सह्याद्री रत्न पुरस्कार २०२५ विजेता</div>    <h1 class="hero-title">माणुसकी जपणारी <br><span>आपुलकी</span></h1>
+    <p class="hero-sub">शिक्षण, आरोग्य, रक्तदान, आपत्ती मदत आणि समाजकल्याणाच्या माध्यमातून समाजासाठी कार्यरत संस्था. डोंबिवलीपासून महाराष्ट्रभर पसरलेले आपुलकीचे जाळे.</p>
+    <div class="hero-btns">
+    <a href="#donate" class="btn-primary"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">favorite</span>देणगी द्या</a>
+<a href="#volunteer" class="btn-outline"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">volunteer_activism</span>स्वयंसेवक बना</a>
+    </div>
+  </div>
+  </section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item-bar">
+      <h3>253+</h3>
+      <p>रक्तदाते</p>
+    </div>
+    <div class="stat-item-bar">
+      <h3>1000+</h3>
+      <p>विद्यार्थ्यांना सहाय्य</p>
+    </div>
+    <div class="stat-item-bar">
+      <h3>100+</h3>
+      <p>कुटुंबांना मदत</p>
+    </div>
+    <div class="stat-item-bar">
+      <h3>50+</h3>
+      <p>सामाजिक उपक्रम</p>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image-col fade-in">
+        <div class="about-img-main" style="background:none;padding:0;overflow:hidden;">
+          {{ABOUT_IMAGE}}
+          {{ABOUT_IMAGE_LABEL}}
+        </div>
+        <div class="about-badge">
+          <strong>२०२३</strong>
+          <span>स्थापना</span>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="section-label">आपुलकी बद्दल</div>
+        <div class="divider"></div>
+        <h2 class="section-title">समाजाच्या सेवेत समर्पित एक विश्वासू संस्था</h2>
+        <p class="section-sub" style="margin-bottom:20px;">आपुलकी चॅरिटेबल ट्रस्ट ही डोंबिवली, महाराष्ट्र येथे स्थापित एक नोंदणीकृत सेवाभावी संस्था आहे. शिक्षण, आरोग्य, रक्तदान, बालकल्याण, आपत्ती मदत आणि सामुदायिक विकास या क्षेत्रांत आपुलकी सतत कार्यरत आहे.</p>
+        <p class="section-sub" style="margin-bottom:32px;">आमची संस्था गरीब, अनाथ, अपंग, विधवा, वृद्ध आणि वंचित समाजघटकांसाठी जीवन सुकर करण्याचे काम करते. मा. श्री. प्रशांत लहू देसाई यांच्या मार्गदर्शनाखाली आपुलकीने महाराष्ट्रात अनेक जिल्ह्यांत आपली उपस्थिती नोंदवली आहे.</p>
+        <div class="about-values">
+          <div class="value-card">
+  <h4><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">target</span>ध्येय</h4>
+  <p>वंचित घटकांपर्यंत शिक्षण व आरोग्य सेवा पोहोचवणे</p>
+</div>
+<div class="value-card">
+  <h4><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">visibility</span>दृष्टिकोन</h4>
+  <p>सर्वसमावेशक व न्यायी महाराष्ट्र घडविणे</p>
+</div>
+<div class="value-card">
+  <h4><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">diamond</span>मूल्ये</h4>
+  <p>पारदर्शकता, सेवाभाव व सामाजिक बांधिलकी</p>
+</div>
+<div class="value-card">
+  <h4><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">handshake</span>विश्वास</h4>
+  <p>समाजाचा विश्वास हेच आमचे खरे बळ</p>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- GALLERY -->
+<section id="gallery" style="background: var(--grey-bg);">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-label">गॅलरी</div>
+      <div class="divider"></div>
+      <h2 class="section-title" style="margin-bottom:-50px; !important">आपुलकीचे कार्य - चित्रांमधून</h2>
+    </div>
+    <div class="gallery-filters fade-in">
+  <button class="filter-btn active" onclick="filterGallery('shikshan', this)"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">menu_book</span>शिक्षण</button>
+  <button class="filter-btn" onclick="filterGallery('arogya', this)"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">local_hospital</span>आरोग्य</button>
+  <button class="filter-btn" onclick="filterGallery('samaj', this)"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">handshake</span>समाज कल्याण</button>
+</div>
+
+<div id="galleryGrid">
+
+  <!-- EDUCATION -->
+
+  <div class="initiative-panel gallery-item program-card prog-blue" data-cat="shikshan">
+  <div class="program-stripe"></div>
+  <div class="program-header" style="display:flex;align-items:center;gap:16px;padding:20px 24px 16px;">
+    <div class="program-icon-wrap" style="margin-bottom:0;flex-shrink:0;"><span class="material-symbols-outlined">menu_book</span></div>
+    <h3 class="initiative-title" style="margin-bottom:0;text-align:center;font-size:42px;">शिक्षण</h3>
+  </div>
+  <div class="program-body">
+    <ul>
+      {{POINTS_SHIKSHAN}}
+    </ul>
+  </div>
+  <div class="initiative-gallery">
+    {{GALLERY_SHIKSHAN}}
+  </div>
+</div>
+
+  <!-- HEALTHCARE -->
+
+ <div class="initiative-panel gallery-item program-card prog-red" data-cat="arogya" style="display:none;">
+  <div class="program-stripe"></div>
+  <div class="program-header" style="display:flex;align-items:center;gap:16px;padding:20px 24px 16px;">
+    <div class="program-icon-wrap" style="margin-bottom:0;flex-shrink:0;"><span class="material-symbols-outlined">local_hospital</span></div>
+    <h3 class="initiative-title" style="margin-bottom:0;text-align:center;font-size:42px;">आरोग्य</h3>
+  </div>
+  <div class="program-body">
+    <ul>
+      {{POINTS_AROGYA}}
+    </ul>
+  </div>
+  <div class="initiative-gallery">
+    {{GALLERY_AROGYA}}
+  </div>
+</div>
+
+  <!-- SOCIAL WELFARE -->
+
+ <div class="initiative-panel gallery-item program-card prog-green" data-cat="samaj" style="display:none;">
+  <div class="program-stripe"></div>
+  <div class="program-header" style="display:flex;align-items:center;gap:16px;padding:20px 24px 16px;">
+    <div class="program-icon-wrap" style="margin-bottom:0;flex-shrink:0;"><span class="material-symbols-outlined">handshake</span></div>
+    <h3 class="initiative-title" style="margin-bottom:0;text-align:center;font-size:42px;">समाज कल्याण</h3>
+  </div>
+  <div class="program-body">
+    <ul>
+      {{POINTS_SAMAJ}}
+    </ul>
+  </div>
+  <div class="initiative-gallery">
+    {{GALLERY_SAMAJ}}
+  </div>
+</div>
+</div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+
+<section class="impact-section" id="impact">
+  <div class="section-inner">
+    <div class="section-header fade-in" style="text-align:center;">
+      <div class="section-label" style="background:rgba(255,255,255,0.15);color:white;">परिणाम</div>
+      <div class="divider" style="margin:16px auto;background:linear-gradient(90deg,var(--orange-light),white);"></div>
+      <h2 class="section-title">आपुलकीचा समाजावर होणारा परिणाम</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.75);margin:0 auto;">संख्यांमागे जगणारी माणसे - हे आपुलकीचे खरे यश</p>
+    </div>
+    <div class="impact-grid fade-in">
+      <div class="impact-card">
+        <span class="impact-icon"><span class="material-symbols-outlined">bloodtype</span></span>
+        <div class="impact-num" data-count="253">0</div>
+        <div class="impact-label">रक्तदाते नेटवर्क<br>महाराष्ट्रभर</div>
+      </div>
+      <div class="impact-card">
+        <span class="impact-icon"><span class="material-symbols-outlined">school</span></span>
+        <div class="impact-num" data-count="1000">0</div>
+        <div class="impact-label">विद्यार्थ्यांना<br>शैक्षणिक सहाय्य</div>
+      </div>
+      <div class="impact-card">
+        <span class="impact-icon"><span class="material-symbols-outlined">diversity_3</span></span>
+        <div class="impact-num" data-count="100">0</div>
+        <div class="impact-label">पूरग्रस्त व गरजू<br>कुटुंबांना मदत</div>
+      </div>
+      <div class="impact-card">
+        <span class="impact-icon"><span class="material-symbols-outlined">campaign</span></span>
+        <div class="impact-num" data-count="50">0</div>
+        <div class="impact-label">यशस्वी सामाजिक<br>उपक्रम</div>
+      </div>
+      <div class="impact-card">
+        <span class="impact-icon"><span class="material-symbols-outlined">medical_services</span></span>
+        <div class="impact-num" data-count="10">0</div>
+        <div class="impact-label">आरोग्य तपासणी<br>शिबिरे</div>
+      </div>
+      <div class="impact-card">
+        <span class="impact-icon"><span class="material-symbols-outlined">map</span></span>
+        <div class="impact-num" data-count="5">0</div>
+        <div class="impact-label">महाराष्ट्रातील<br>जिल्हे</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-label">गौरव आणि सन्मान</div>
+      <div class="divider"></div>
+      <h2 class="section-title">आपुलकीचे यश आणि मान्यता</h2>
+      <p class="section-sub" style="margin:0 auto;">समाजाच्या सेवेला मिळालेली राष्ट्रीय पोचपावती</p>
+    </div>
+
+    <div class="award-showcase fade-in">
+      <div class="award-grid">
+        <div class="award-img" style="background:none;padding:0;overflow:hidden;border-radius:16px;">
+          <img src="assets/awards.jpg" alt="सह्याद्री रत्न पुरस्कार २०२५" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+        </div>
+        <div>
+          <div class="award-badge-tag">राज्यस्तरीय पुरस्कार • २०२५</div>
+          <h3 class="award-title">सह्याद्री रत्न पुरस्कार २०२५</h3>
+          <div class="award-recipient">
+            <strong>मा. श्री. प्रशांत लहू देसाई</strong><br>
+            अध्यक्ष, आपुलकी चॅरिटेबल ट्रस्ट, डोंबिवली
+          </div>
+          <p class="award-desc">महाराष्ट्रातील सामाजिक कार्यासाठी दिल्या जाणाऱ्या प्रतिष्ठित राज्यस्तरीय सह्याद्री रत्न पुरस्काराने आपुलकीचे अध्यक्ष मा. श्री. प्रशांत लहू देसाई यांना सन्मानित करण्यात आले. शिक्षण, आरोग्य आणि रक्तदान क्षेत्रातील उल्लेखनीय कार्यासाठी हा पुरस्कार प्रदान करण्यात आला.</p>
+          <div class="award-meta">
+            <div class="award-meta-item"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">calendar_month</span> <span>वर्ष २०२५</span></div>
+<div class="award-meta-item"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">location_on</span> <span>महाराष्ट्र</span></div>
+<div class="award-meta-item"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">military_tech</span> <span>राज्यस्तरीय मान्यता</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="award-showcase fade-in">
+  <div class="award-grid">
+
+    <!-- TEXT -->
+    <div>
+<div class="award-badge-tag"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">newspaper</span> ठाणे वार्ता • २६ जून २०२५</div>
+      <h3 class="award-title">
+        विद्यार्थ्यांना सायकली व शैक्षणिक साहित्याचे वाटप
+      </h3>
+
+      <p class="award-desc">
+        आपुलकी चॅरिटेबल ट्रस्टतर्फे पालघर जिल्ह्यातील विद्यार्थ्यांना मोफत
+        सायकली व शैक्षणिक साहित्याचे वाटप करण्यात आले. शिक्षणासाठी दररोज
+        लांब अंतराचा प्रवास करणाऱ्या विद्यार्थ्यांना या उपक्रमाचा मोठा लाभ
+        झाला असून स्थानिक स्तरावर त्याचे उत्स्फूर्त स्वागत करण्यात आले.
+      </p>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="award-img" style="width:650px;height:260px;background:none;padding:0;overflow:hidden;border-radius:16px;width:90%;height:90%;object-fit:contain;margin:auto;display:block;">
+      <img
+        src="assets/news article.jpg"
+        alt="विद्यार्थ्यांना सायकली व शैक्षणिक साहित्याचे वाटप"
+        style="width:100%;height:100%;object-fit:cover;border-radius:16px;"
+      >
+    </div>
+
+  </div>
+</div>
+
+    {{ACHIEVEMENTS_EXTRA}}
+  </div>
+
+</section>
+
+
+<!-- VIDEO -->
+<section class="video-section" id="video">
+  <div class="section-inner" style="text-align:center;">
+
+    <div class="section-label"
+      style="background:rgba(245,124,0,0.2);color:var(--orange-light);">
+      व्हिडिओ
+    </div>
+
+    <div class="divider" style="margin:16px auto;"></div>
+
+    <h2 class="section-title">आपुलकीच्या कार्याची झलक</h2>
+
+    <p class="section-sub"
+      style="color:rgba(255,255,255,0.65);margin:0 auto 40px;">
+      आपुलकीच्या विविध सामाजिक उपक्रमांची झलक
+    </p>
+
+    <div class="video-wrapper">
+
+      <button class="video-btn prev"
+        onclick="scrollVideos(-1)">
+        ❮
+      </button>
+
+      <div class="video-container" id="videoContainer">
+        {{VIDEOS}}
+      </div>
+
+      <button class="video-btn next"
+        onclick="scrollVideos(1)">
+        ❯
+      </button>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- AMCHE KARYAKARTE -->
+<section class="karyakarte-section" id="karyakarte">
+  <div class="karyakarte-wrapper">
+<div class="section-label">गॅलरी</div>
+<div class="divider" style="margin:16px auto;"></div>    <h2 class="section-title">
+      आमचे कार्यकर्ते
+    </h2>
+
+    <div class="karyakarte-image">
+      {{KARYAKARTE_IMAGE}}
+    </div>
+
+  </div>
+</section>
+
+
+<!-- VOLUNTEER -->
+<section class="volunteer-section" id="volunteer">
+  <div class="section-inner">
+    <div class="volunteer-grid">
+      <div class="volunteer-info fade-in">
+        <div class="section-label">स्वयंसेवक</div>
+        <div class="divider"></div>
+        <h2 class="section-title">आपुलकीचे स्वयंसेवक बना</h2>
+        <p>समाजासाठी काहीतरी करण्याची इच्छा आहे? आपुलकीसोबत जोडा. आपला वेळ, कौशल्य आणि उर्जा समाज परिवर्तनासाठी वापरा.</p>
+        <div class="volunteer-perks">
+          <div class="perk-item">
+            <div class="perk-icon"><span class="material-symbols-outlined">school</span></div>
+            <p>प्रत्यक्ष सामाजिक कार्याचा अनुभव मिळवा</p>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon"><span class="material-symbols-outlined">handshake</span></div>
+            <p>समविचारी कार्यकर्त्यांच्या नेटवर्कशी जोडा</p>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon"><span class="material-symbols-outlined">workspace_premium</span></div>
+            <p>स्वयंसेवक प्रमाणपत्र व मान्यता</p>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon"><span class="material-symbols-outlined">favorite</span></div>
+            <p>समाधान – जे पैशांनी विकत घेता येत नाही</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-card fade-in">
+        <h3><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">how_to_reg</span>स्वयंसेवक नोंदणी</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>पूर्ण नाव *</label>
+            <input type="text" placeholder="आपले पूर्ण नाव">
+          </div>
+          <div class="form-group">
+            <label>मोबाईल क्रमांक *</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>ईमेल</label>
+          <input type="email" placeholder="email@example.com">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>शहर *</label>
+            <input type="text" placeholder="डोंबिवली / मुंबई">
+          </div>
+          <div class="form-group">
+            <label>व्यवसाय</label>
+            <input type="text" placeholder="विद्यार्थी / नोकरी">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>संदेश</label>
+          <textarea placeholder="आपण कोणत्या क्षेत्रात योगदान देऊ इच्छिता?"></textarea>
+        </div>
+        <button class="btn-submit" onclick="submitVolunteer()"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">volunteer_activism</span>स्वयंसेवक बना</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATION -->
+<section class="donation-section" id="donate">
+  <div class="section-inner">
+    <div class="section-header fade-in" style="text-align:center;">
+      <div class="section-label">देणगी</div>
+      <div class="divider" style="margin:16px auto;"></div>
+      <h2 class="section-title">आपुलकीला साथ द्या</h2>
+      <p class="section-sub" style="margin:0 auto;">आपल्या एका छोट्या मदतीने एका मुलाचे भविष्य बदलू शकते</p>
+    </div>
+    <div class="donation-grid fade-in">
+      <div>
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:20px;color:var(--text-dark);">देणगी रक्कम निवडा</h3>
+        <div class="donation-tiers">
+          <div class="tier-card selected" onclick="selectTier(this)">
+            <div class="tier-amount">₹४००</div>
+            <div class="tier-label">शैक्षणिक साहित्य संच</div>
+          </div>
+          <div class="tier-card" onclick="selectTier(this)">
+            <div class="tier-amount">₹१०००</div>
+            <div class="tier-label">विद्यार्थी सहाय्य</div>
+          </div>
+          <div class="tier-card" onclick="selectTier(this)">
+            <div class="tier-amount">₹३०००</div>
+            <div class="tier-label">आरोग्य सहाय्य</div>
+          </div>
+          <div class="tier-card" onclick="selectTier(this)">
+            <div class="tier-amount">₹५०००</div>
+            <div class="tier-label">समाजकल्याण उपक्रम</div>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:8px;">
+          <label>इतर रक्कम (ऐच्छिक)</label>
+          <input type="number" placeholder="₹ आपली इच्छित रक्कम">
+        </div>
+        <p style="font-size:13px;color:var(--text-light);margin-top:8px;">🔒 सर्व देणग्या ८०G अंतर्गत करमुक्त | पावती ईमेलवर मिळेल</p>
+      </div>
+      <div class="donation-payment">
+        <h3>देणगी करण्याचे मार्ग</h3>
+        <div class="qr-box">📱</div>
+        <p style="font-size:13px;color:var(--text-light);margin-bottom:20px;">QR Code स्कॅन करा</p>
+
+        <div style="text-align:left;">
+          <div class="bank-detail-row">
+            <strong>बँक</strong><span>बँकेचे नाव येथे</span>
+          </div>
+          <div class="bank-detail-row">
+            <strong>खाते क्रमांक</strong><span>XXXX XXXX XXXX</span>
+          </div>
+          <div class="bank-detail-row">
+            <strong>IFSC</strong><span>XXXX0000000</span>
+          </div>
+          <div class="bank-detail-row">
+            <strong>खाते नाव</strong><span>Aapulki Charitable Trust</span>
+          </div>
+        </div>
+
+        <div class="upi-chip">📲 UPI: aapulki@upi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-label blue">संपर्क</div>
+      <div class="divider blue"></div>
+      <h2 class="section-title">आमच्याशी संपर्क साधा</h2>
+    </div>
+    <div class="contact-grid fade-in">
+      <div>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-card-icon cc-orange"><span class="material-symbols-outlined">location_on</span></div>
+            <div>
+              <h4>पत्ता</h4>
+              <p>Shop No. 11, Regency Anantam Commercial 2,<br>Dawadi, Dombivli East, Maharashtra</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon cc-blue"><span class="material-symbols-outlined">call</span></div>
+            <div>
+              <h4>मोबाईल</h4>
+              <p><a href="tel:9819716831" style="color:var(--text-dark);text-decoration:none;">9819716831</a></p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon cc-green"><span class="material-symbols-outlined">mail</span></div>
+            <div>
+              <h4>ईमेल</h4>
+              <p><a href="mailto:Aapulkicharitabletrust2K23@gmail.com" style="color:var(--text-dark);text-decoration:none;word-break:break-all;">Aapulkicharitabletrust2K23@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon cc-orange"><span class="material-symbols-outlined">language</span></div>
+            <div>
+              <h4>वेबसाईट</h4>
+              <p><a href="https://www.aapulkicharitabletrust.com" target="_blank" style="color:var(--blue);text-decoration:none;">www.aapulkicharitabletrust.com</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="social-row">
+          <a href="https://www.facebook.com/share/192aR3uNXF/" target="_blank" class="social-btn" title="Facebook"><img src="https://cdn.simpleicons.org/facebook" alt="Facebook" width="20" height="20"></a>
+          <a href="https://instagram.com/aapulki.trust" target="_blank" class="social-btn" title="Instagram @aapulki.trust"><img src="https://cdn.simpleicons.org/instagram" alt="Instagram" width="20" height="20"></a>
+          <a href="https://wa.me/919819716831" target="_blank" class="social-btn" title="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp" alt="WhatsApp" width="20" height="20"></a>
+        </div>
+        <div style="margin-top:20px;">
+          <a href="https://wa.me/919819716831" class="whatsapp-btn">
+            <img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" width="18" height="18" style="vertical-align:middle;margin-right:6px;"> WhatsApp वर संपर्क करा
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="map-placeholder"><span class="material-symbols-outlined">map</span></div>
+        <div class="form-card" style="padding:28px;">
+          <h3 style="font-size:17px;margin-bottom:20px;">संदेश पाठवा</h3>
+          <div class="form-group">
+            <label>नाव</label>
+            <input type="text" placeholder="आपले नाव">
+          </div>
+          <div class="form-group">
+            <label>मोबाईल / ईमेल</label>
+            <input type="text" placeholder="संपर्क माहिती">
+          </div>
+          <div class="form-group">
+            <label>संदेश</label>
+            <textarea placeholder="आपला संदेश..." style="min-height:80px;"></textarea>
+          </div>
+          <button class="btn-submit" onclick="submitContact()"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">send</span>संदेश पाठवा</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- LIGHTBOX -->
+<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+  <div style="position:relative;max-width:90vw;max-height:90vh;">
+    <img id="lightboxImg" src="" alt="" style="max-width:100%;max-height:85vh;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.8);">
+    <p id="lightboxCaption" style="color:white;text-align:center;margin-top:12px;font-size:14px;opacity:0.8;"></p>
+    <button onclick="closeLightbox()" style="position:absolute;top:-16px;right:-16px;width:40px;height:40px;border-radius:50%;background:white;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);">✕</button>
+    <button onclick="prevImg()" style="position:absolute;left:-60px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.3);color:white;font-size:20px;cursor:pointer;">‹</button>
+    <button onclick="nextImg()" style="position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.3);color:white;font-size:20px;cursor:pointer;">›</button>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-grid">
+
+    <!-- BRAND + REGISTRATION -->
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:16px;">
+        <img src="assets/apulki logo.png" alt="आपुलकी लोगो" style="height:90px;width:auto;object-fit:contain; top:-50px;">
+        <div class="logo-text">
+          <h1>आपुलकी चॅरिटेबल ट्रस्ट</h1>
+          <p>जाणीव माणुसकीची</p>
+        </div>
+      </div>
+      <p style="margin-bottom:16px;">शिक्षण, आरोग्य, रक्तदान, बालकल्याण, आपत्ती मदत आणि सामुदायिक विकासाद्वारे समाजसेवेत समर्पित संस्था.</p>
+
+      <!-- Registration Numbers -->
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.55);">
+          <span style="color:var(--orange-light);font-weight:600;min-width:110px;">NGO Reg. No.</span>
+          <span>E 0013979 (THN)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.55);">
+          <span style="color:var(--orange-light);font-weight:600;min-width:110px;">12A No.</span>
+          <span>AALTA2672BE20251</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.55);">
+          <span style="color:var(--orange-light);font-weight:600;min-width:110px;">80G No.</span>
+          <span>AALTA2672BF20251</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.55);">
+          <span style="color:var(--orange-light);font-weight:600;min-width:110px;">Darpan ID</span>
+          <span>MH/2025/0857553</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h4>त्वरित दुवे</h4>
+      <ul>
+        <li><a href="#about">आपुलकी बद्दल</a></li>
+        <li><a href="#objectives">उद्दिष्टे</a></li>
+        <li><a href="#programs">उपक्रम</a></li>
+        <li><a href="#impact">परिणाम</a></li>
+        <li><a href="#achievements">गौरव</a></li>
+        <li><a href="#gallery">गॅलरी</a></li>
+        <li><a href="#volunteer">स्वयंसेवक</a></li>
+        <li><a href="#donate">देणगी</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-col">
+      <h4>संपर्क</h4>
+      <ul>
+        <li style="color:rgba(255,255,255,0.55);font-size:13px;line-height:1.6;padding-bottom:8px;">
+          Shop No. 11, Regency Anantam Commercial 2,<br>Dawadi, Dombivli East
+        </li>
+        <li>
+          <a href="tel:9819716831" style="display:flex;align-items:center;gap:6px;">
+            <span class="material-symbols-outlined" style="font-size:16px;">call</span> 9819716831
+          </a>
+        </li>
+        <li>
+          <a href="mailto:Aapulkicharitabletrust2K23@gmail.com" style="word-break:break-all;">
+            <span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">mail</span>Aapulkicharitabletrust2K23@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="https://www.aapulkicharitabletrust.com" target="_blank">
+            <span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">language</span>www.aapulkicharitabletrust.com
+          </a>
+        </li>
+      </ul>
+
+      <!-- Social -->
+      <h4 style="margin-top:20px;">आम्हाला फॉलो करा</h4>
+      <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;">
+        <a href="https://www.facebook.com/share/192aR3uNXF/" target="_blank"
+           style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:7px 12px;color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:500;transition:all 0.2s;"
+           onmouseover="this.style.background='#1877F2';this.style.borderColor='#1877F2'"
+           onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.15)'">
+          <img src="https://cdn.simpleicons.org/facebook/ffffff" alt="" width="16" height="16"> Facebook
+        </a>
+        <a href="https://instagram.com/aapulki.trust" target="_blank"
+           style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:7px 12px;color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:500;transition:all 0.2s;"
+           onmouseover="this.style.background='#E1306C';this.style.borderColor='#E1306C'"
+           onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.15)'">
+          <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="" width="16" height="16"> @aapulki.trust
+        </a>
+        <a href="https://wa.me/919819716831" target="_blank"
+           style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:7px 12px;color:rgba(255,255,255,0.8);text-decoration:none;font-size:12px;font-weight:500;transition:all 0.2s;"
+           onmouseover="this.style.background='#25D366';this.style.borderColor='#25D366'"
+           onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.15)'">
+          <img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" width="16" height="16"> WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- PROGRAMS -->
+    <div class="footer-col">
+      <h4>उपक्रम</h4>
+      <ul>
+        <li><a href="#programs"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">menu_book</span>शिक्षण</a></li>
+        <li><a href="#programs"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">local_hospital</span>आरोग्य</a></li>
+        <li><a href="#programs"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">bloodtype</span>रक्तदान</a></li>
+        <li><a href="#programs"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">child_care</span>बालकल्याण</a></li>
+        <li><a href="#programs"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">flood</span>आपत्ती मदत</a></li>
+        <li><a href="#programs"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">celebration</span>सण उपक्रम</a></li>
+      </ul>
+      <h4 style="margin-top:20px;">देणगी</h4>
+      <ul>
+        <li style="color:rgba(255,255,255,0.55);font-size:12px;line-height:1.7;">
+          ८०G अंतर्गत करमुक्त देणग्या<br>
+          <span style="color:var(--orange-light);font-weight:600;">AALTA2672BF20251</span>
+        </li>
+        <li style="margin-top:8px;"><a href="#donate"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">favorite</span>देणगी द्या</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© २०२५ आपुलकी चॅरिटेबल ट्रस्ट | सर्व हक्क राखीव</span>
+    <span style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+      <span>NGO Reg: E 0013979 (THN)</span>
+      <span>|</span>
+      <span>Darpan: MH/2025/0857553</span>
+      <span>|</span>
+      <span>डोंबिवली पूर्व, महाराष्ट्र</span>
+    </span>
+  </div>
+</footer>
+
+<script>
+// ─── HERO SLIDER ───
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.dot');
+
+function goToSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+setInterval(() => {
+  goToSlide((currentSlide + 1) % slides.length);
+}, 4500);
+
+// ─── MOBILE MENU ───
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ─── SCROLL ANIMATIONS ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ─── COUNTER ANIMATION ───
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.animated) {
+      e.target.dataset.animated = true;
+      const target = parseInt(e.target.dataset.count);
+      const suffix = target > 99 ? '+' : (target > 4 ? '+' : '+');
+      let start = 0;
+      const step = Math.ceil(target / 60);
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) {
+          e.target.textContent = target + suffix;
+          clearInterval(timer);
+        } else {
+          e.target.textContent = start + suffix;
+        }
+      }, 30);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ─── GALLERY FILTER ───
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+
+// ─── DONATION TIER SELECTOR ───
+function selectTier(el) {
+  document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ─── FORM SUBMISSIONS ───
+function submitVolunteer() {
+  alert('धन्यवाद! आपली नोंदणी यशस्वी झाली. आपुलकीची टीम लवकरच आपल्याशी संपर्क करेल. 🙏');
+}
+function submitContact() {
+  alert('आपला संदेश मिळाला. आम्ही लवकरच उत्तर देऊ. धन्यवाद! 🙏');
+}
+
+// ─── GALLERY LIGHTBOX ───
+let galleryImages = [];
+let currentLightboxIndex = 0;
+
+function buildGalleryIndex() {
+  galleryImages = [];
+  document.querySelectorAll('#galleryGrid .gallery-item').forEach(item => {
+    if (item.style.display !== 'none') {
+      const img = item.querySelector('img');
+      const cap = item.querySelector('.gallery-overlay p');
+      galleryImages.push({ src: img.src, caption: cap ? cap.textContent : '' });
+    }
+  });
+}
+
+function openLightbox(index) {
+  buildGalleryIndex();
+  currentLightboxIndex = index;
+  showLightboxImage();
+  const lb = document.getElementById('lightbox');
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function showLightboxImage() {
+  document.getElementById('lightboxImg').src = galleryImages[currentLightboxIndex].src;
+  document.getElementById('lightboxCaption').textContent = galleryImages[currentLightboxIndex].caption;
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function prevImg() {
+  currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+  showLightboxImage();
+}
+function nextImg() {
+  currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+  showLightboxImage();
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+document.addEventListener('keydown', function(e) {
+  const lb = document.getElementById('lightbox');
+  if (lb.style.display === 'flex') {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') prevImg();
+    if (e.key === 'ArrowRight') nextImg();
+  }
+});
+
+/* // Attach click to gallery items
+document.querySelectorAll('#galleryGrid .gallery-item').forEach((item, index) => {
+  item.addEventListener('click', () => {
+    buildGalleryIndex();
+    const visibleItems = Array.from(document.querySelectorAll('#galleryGrid .gallery-item')).filter(i => i.style.display !== 'none');
+    const visibleIndex = visibleItems.indexOf(item);
+    openLightbox(visibleIndex >= 0 ? visibleIndex : 0);
+  });
+});
+
+*/
+
+const videoTrack = document.getElementById('videoTrack');
+const prev = document.getElementById('videoPrev');
+const next = document.getElementById('videoNext');
+
+let currentSlide = 0;
+
+function visibleVideos(){
+  return window.innerWidth <= 768 ? 1 : 3;
+}
+
+function updateVideoCarousel(){
+
+  const cards = document.querySelectorAll('.video-card');
+  const gap = 24;
+
+  if(cards.length === 0) return;
+
+  const width = cards[0].offsetWidth + gap;
+
+  videoTrack.style.transform =
+    `translateX(-${currentSlide * width}px)`;
+
+  prev.disabled = currentSlide === 0;
+
+  next.disabled =
+    currentSlide >= cards.length - visibleVideos();
+}
+
+next.addEventListener('click', () => {
+
+  const cards = document.querySelectorAll('.video-card');
+
+  if(currentSlide < cards.length - visibleVideos()){
+    currentSlide++;
+    updateVideoCarousel();
+  }
+});
+
+prev.addEventListener('click', () => {
+
+  if(currentSlide > 0){
+    currentSlide--;
+    updateVideoCarousel();
+  }
+});
+
+window.addEventListener('resize', updateVideoCarousel);
+window.addEventListener('load', updateVideoCarousel);
+
+function scrollVideos(direction){
+
+  const container =
+    document.getElementById('videoContainer');
+
+  const card =
+    container.querySelector('.video-card');
+
+  const width =
+    card.offsetWidth + 24;
+
+  container.scrollBy({
+    left: direction * width,
+    behavior: 'smooth'
+  });
+
+}
+</script>
+
+<script>
+// ─── HERO SLIDER ───
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.dot');
+
+function goToSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+setInterval(() => {
+  goToSlide((currentSlide + 1) % slides.length);
+}, 4500);
+
+// ─── MOBILE MENU ───
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ─── SCROLL ANIMATIONS ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ─── COUNTER ANIMATION ───
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.animated) {
+      e.target.dataset.animated = true;
+      const target = parseInt(e.target.dataset.count);
+      const suffix = target > 99 ? '+' : (target > 4 ? '+' : '+');
+      let start = 0;
+      const step = Math.ceil(target / 60);
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) {
+          e.target.textContent = target + suffix;
+          clearInterval(timer);
+        } else {
+          e.target.textContent = start + suffix;
+        }
+      }, 30);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ─── GALLERY FILTER ───
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+
+// ─── DONATION TIER SELECTOR ───
+function selectTier(el) {
+  document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ─── FORM SUBMISSIONS ───
+function submitVolunteer() {
+  alert('धन्यवाद! आपली नोंदणी यशस्वी झाली. आपुलकीची टीम लवकरच आपल्याशी संपर्क करेल. 🙏');
+}
+function submitContact() {
+  alert('आपला संदेश मिळाला. आम्ही लवकरच उत्तर देऊ. धन्यवाद! 🙏');
+}
+
+// ─── GALLERY LIGHTBOX ───
+let galleryImages = [];
+let currentLightboxIndex = 0;
+
+function buildGalleryIndex() {
+  galleryImages = [];
+  document.querySelectorAll('#galleryGrid .gallery-item').forEach(item => {
+    if (item.style.display !== 'none') {
+      const img = item.querySelector('img');
+      const cap = item.querySelector('.gallery-overlay p');
+      galleryImages.push({ src: img.src, caption: cap ? cap.textContent : '' });
+    }
+  });
+}
+
+function openLightbox(index) {
+  buildGalleryIndex();
+  currentLightboxIndex = index;
+  showLightboxImage();
+  const lb = document.getElementById('lightbox');
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function showLightboxImage() {
+  document.getElementById('lightboxImg').src = galleryImages[currentLightboxIndex].src;
+  document.getElementById('lightboxCaption').textContent = galleryImages[currentLightboxIndex].caption;
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function prevImg() {
+  currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+  showLightboxImage();
+}
+function nextImg() {
+  currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+  showLightboxImage();
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+document.addEventListener('keydown', function(e) {
+  const lb = document.getElementById('lightbox');
+  if (lb.style.display === 'flex') {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') prevImg();
+    if (e.key === 'ArrowRight') nextImg();
+  }
+});
+
+
+</script>
+
+<script>
+const container = document.getElementById('videoContainer');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+function updateVideoButtons() {
+
+    const maxScroll =
+        container.scrollWidth - container.clientWidth;
+
+    prevBtn.disabled = container.scrollLeft <= 5;
+
+    nextBtn.disabled =
+        container.scrollLeft >= maxScroll - 5;
+}
+
+function scrollVideos(direction) {
+
+    const card = container.querySelector('.video-card');
+
+    if (!card) return;
+
+    const gap = 24;
+    const scrollAmount = card.offsetWidth + gap;
+
+    container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+
+    setTimeout(updateVideoButtons, 400);
+}
+
+container.addEventListener('scroll', updateVideoButtons);
+
+window.addEventListener('load', updateVideoButtons);
+
+window.addEventListener('resize', updateVideoButtons);
+</script>
+<script>
+function toggleVideo(video) {
+
+  if(video.paused){
+    video.play();
+  } else {
+    video.pause();
+  }
+
+}
+</script>
+<script>
+/* ─── GALLERY: orientation handling + fullscreen lightbox ─── */
+(function(){
+  var cards = Array.prototype.slice.call(
+    document.querySelectorAll('.initiative-image-card')
+  );
+
+  // Tag each card portrait/landscape and give portrait ones a blurred fill
+  function tagOrientation(card){
+    var img = card.querySelector('img');
+    if(!img) return;
+    function apply(){
+      if(!img.naturalWidth || !img.naturalHeight) return;
+      var portrait = img.naturalHeight > img.naturalWidth * 1.05;
+      card.classList.toggle('is-portrait', portrait);
+      card.classList.toggle('is-landscape', !portrait);
+      if(portrait){
+        card.style.setProperty('--bg', "url('" + img.src.replace(/'/g, "\\'") + "')");
+      }
+    }
+    if(img.complete && img.naturalWidth){ apply(); }
+    else {
+      img.addEventListener('load', apply);
+      img.addEventListener('error', function(){ card.classList.add('is-landscape'); });
+    }
+  }
+  cards.forEach(tagOrientation);
+
+  // Lightbox (reuses existing #lightbox markup + its inline buttons)
+  var lb    = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightboxImg');
+  var lbCap = document.getElementById('lightboxCaption');
+  var items = [];
+  var idx   = 0;
+  var lastNav = 0;
+  function navOk(){ var t = Date.now(); if(t - lastNav < 80) return false; lastNav = t; return true; }
+
+  function visibleCards(){
+    return cards.filter(function(c){ return c.offsetParent !== null; });
+  }
+  function render(){
+    var c = items[idx]; if(!c) return;
+    var img = c.querySelector('img');
+    var cap = c.querySelector('p');
+    lbImg.src = img ? img.src : '';
+    lbCap.textContent = cap ? cap.textContent : '';
+  }
+
+  window.openLightbox = function(card){
+    items = visibleCards();
+    idx = Math.max(0, items.indexOf(card));
+    render();
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeLightbox = function(){
+    lb.style.display = 'none';
+    document.body.style.overflow = '';
+  };
+  window.prevImg = function(){
+    if(!items.length || !navOk()) return;
+    idx = (idx - 1 + items.length) % items.length; render();
+  };
+  window.nextImg = function(){
+    if(!items.length || !navOk()) return;
+    idx = (idx + 1) % items.length; render();
+  };
+
+  cards.forEach(function(c){
+    c.addEventListener('click', function(){ window.openLightbox(c); });
+  });
+
+  if(lb){
+    lb.addEventListener('click', function(e){ if(e.target === lb) window.closeLightbox(); });
+  }
+  document.addEventListener('keydown', function(e){
+    if(lb && lb.style.display === 'flex'){
+      if(e.key === 'Escape') window.closeLightbox();
+      else if(e.key === 'ArrowLeft') window.prevImg();
+      else if(e.key === 'ArrowRight') window.nextImg();
+    }
+  });
+})();
+</script>
+<script>
+/* ── Fullscreen for standalone images (About + Karyakarte) ── */
+(function(){
+  var lb = document.getElementById('lightbox');
+  if(!lb) return;
+  var lbImg = document.getElementById('lightboxImg');
+  var lbCap = document.getElementById('lightboxCaption');
+
+  // gallery opens = multi-image (show arrows)
+  var _open = window.openLightbox;
+  window.openLightbox = function(card){
+    lb.classList.remove('single');
+    if(typeof _open === 'function') _open(card);
+  };
+  // always clear the single flag on close
+  var _close = window.closeLightbox;
+  window.closeLightbox = function(){
+    lb.classList.remove('single');
+    if(typeof _close === 'function') _close();
+    else { lb.style.display='none'; document.body.style.overflow=''; }
+  };
+
+  function openSingle(src, caption){
+    lb.classList.add('single');           // hide arrows for one image
+    lbImg.src = src;
+    lbCap.textContent = caption || '';
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  [
+    { sel:'.about-img-main img',   cap:'आपुलकी चॅरिटेबल ट्रस्ट' },
+    { sel:'.karyakarte-image img', cap:'आमचे कार्यकर्ते' }
+  ].forEach(function(t){
+    var img = document.querySelector(t.sel);
+    if(!img) return;
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function(e){
+      e.stopPropagation();
+      openSingle(img.src, t.cap);
+    });
+  });
+})();
+</script>
+
+
+</body>
+</html>

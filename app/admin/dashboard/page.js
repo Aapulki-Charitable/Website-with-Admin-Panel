@@ -25,12 +25,33 @@ export default async function DashboardPage({ searchParams }) {
   const flash = searchParams?.flash;
   const flashType = searchParams?.flashType === 'error' ? 'error' : 'ok';
 
-  const [gallery, videos, content, achievements] = await Promise.all([
+  const [galleryRaw, videosRaw, contentRaw, achievementsRaw] = await Promise.all([
     getGallery(),
     getVideos(),
     getContent(),
     getAchievements(),
   ]);
+  const gallery = Array.isArray(galleryRaw) ? galleryRaw : [];
+  const videos = Array.isArray(videosRaw) ? videosRaw : [];
+  const achievements = Array.isArray(achievementsRaw) ? achievementsRaw : [];
+  const content = {
+    aboutImage: 'assets/253 donors.png',
+    aboutImageName: 'मा. श्री. प्रशांत लहू देसाई',
+    aboutImageRole: 'अध्यक्ष, आपुलकी चॅरिटेबल ट्रस्ट',
+    karyakarteImage: 'assets/amche karyakarte.jpg',
+    points: {
+      shikshan: [],
+      arogya: [],
+      samaj: [],
+    },
+    ...(contentRaw || {}),
+    points: {
+      shikshan: [],
+      arogya: [],
+      samaj: [],
+      ...((contentRaw && contentRaw.points) || {}),
+    },
+  };
   const catItems = gallery.filter((g) => g.category === activeTab);
 
   return (

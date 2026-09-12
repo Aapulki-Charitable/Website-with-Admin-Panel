@@ -38,8 +38,17 @@ export async function POST(request) {
   }
 
   if (type === 'achievement') {
+    const { tag, title, description } = data;
+    const finalTitle = (title || caption || '').trim();
     const achievements = await getAchievements();
-    achievements.push({ id: newId('ac'), image: url, caption: (caption || '').trim() });
+    achievements.push({
+      id: newId('ac'),
+      image: url,
+      tag: (tag || '').trim(),
+      title: finalTitle,
+      caption: finalTitle,
+      description: (description || '').trim(),
+    });
     await saveAchievements(achievements);
     return NextResponse.json({ ok: true });
   }

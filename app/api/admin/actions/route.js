@@ -87,12 +87,17 @@ export async function POST(request) {
 
       case 'edit_achievement': {
         const id = String(formData.get('id') || '');
-        const caption = String(formData.get('caption') || '').trim();
+        const tag = String(formData.get('tag') || '').trim();
+        const title = String(formData.get('title') || formData.get('caption') || '').trim();
+        const description = String(formData.get('description') || '').trim();
 
         const achievements = await getAchievements();
         const item = achievements.find((a) => a.id === id);
         if (!item) return redirectWithFlash(origin, tab, 'नोंद सापडली नाही.', 'error');
-        item.caption = caption;
+        item.tag = tag;
+        item.title = title;
+        item.caption = title;
+        item.description = description;
         await saveAchievements(achievements);
 
         return redirectWithFlash(origin, tab, 'माहिती अपडेट झाली.', 'ok');

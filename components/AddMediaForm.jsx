@@ -21,7 +21,10 @@ export default function AddMediaForm({ kind, category, tab }) {
     e.preventDefault();
     const form = e.target;
     const file = form.elements[fieldName].files[0];
-    const caption = form.elements.caption.value;
+    const caption = form.elements.caption ? form.elements.caption.value : '';
+    const tag = form.elements.tag ? form.elements.tag.value : '';
+    const title = form.elements.title ? form.elements.title.value : caption;
+    const description = form.elements.description ? form.elements.description.value : '';
 
     if (!file) {
       setStatus('error');
@@ -78,7 +81,10 @@ export default function AddMediaForm({ kind, category, tab }) {
         body: JSON.stringify({
           type: kind,
           url: mediaUrl,
-          caption,
+          caption: title || caption,
+          title: title || caption,
+          tag: tag || '',
+          description: description || '',
           category,
         }),
       });
@@ -88,9 +94,12 @@ export default function AddMediaForm({ kind, category, tab }) {
         throw new Error(data.error || 'सेव्ह करता आले नाही.');
       }
 
-      const successMsg = isImage
-        ? 'नवीन फोटो यशस्वीरित्या जोडला गेला.'
-        : 'नवीन व्हिडिओ यशस्वीरित्या जोडला गेला.';
+      const successMsg =
+        kind === 'achievement'
+          ? 'नवीन गौरव नोंद यशस्वीरित्या जोडली गेली.'
+          : isImage
+          ? 'नवीन फोटो यशस्वीरित्या जोडला गेला.'
+          : 'नवीन व्हिडिओ यशस्वीरित्या जोडला गेला.';
       window.location.href = `/admin/dashboard?tab=${tab}&flash=${encodeURIComponent(
         successMsg
       )}&flashType=ok`;
@@ -102,32 +111,80 @@ export default function AddMediaForm({ kind, category, tab }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'flex-end' }}>
-        <div className="field" style={{ maxWidth: 260 }}>
-          <label style={{ fontSize: 12.5, fontWeight: 600 }}>
-            {isImage ? 'फोटो निवडा' : 'व्हिडिओ निवडा'}
-          </label>
-          <input
-            type="file"
-            name={fieldName}
-            accept={accept}
-            required
-            disabled={status === 'uploading'}
-          />
+      {kind === 'achievement' ? (
+        <>
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'flex-end', marginBottom: 12 }}>
+            <div className="field" style={{ flex: '1 1 240px', maxWidth: 300 }}>
+              <label style={{ fontSize: 12.5, fontWeight: 600 }}>फोटो निवडा *</label>
+              <input
+                type="file"
+                name={fieldName}
+                accept={accept}
+                required
+                disabled={status === 'uploading'}
+              />
+            </div>
+            <div className="field" style={{ flex: '1 1 200px' }}>
+              <label style={{ fontSize: 12.5, fontWeight: 600 }}>पिल / बॅज मजकूर (उदा. राज्यस्तरीय पुरस्कार • २०२५)</label>
+              <input
+                type="text"
+                name="tag"
+                placeholder="उदा. सन्मान व गौरव किंवा ठाणे वार्ता"
+                disabled={status === 'uploading'}
+              />
+            </div>
+            <div className="field" style={{ flex: '1 1 260px' }}>
+              <label style={{ fontSize: 12.5, fontWeight: 600 }}>शीर्षक - मोठे केशरी अक्षरे *</label>
+              <input
+                type="text"
+                name="title"
+                placeholder="उदा. सह्याद्री रत्न पुरस्कार २०२५"
+                required
+                disabled={status === 'uploading'}
+              />
+            </div>
+          </div>
+          <div className="field" style={{ width: '100%', marginBottom: 14 }}>
+            <label style={{ fontSize: 12.5, fontWeight: 600 }}>सविस्तर माहिती / परिच्छेद</label>
+            <textarea
+              name="description"
+              placeholder="पुरस्कार, उपक्रम किंवा बातमीबद्दल सविस्तर माहिती लिहा..."
+              style={{ minHeight: 70, resize: 'vertical' }}
+              disabled={status === 'uploading'}
+            />
+          </div>
+          <button className="btn btn-primary" type="submit" disabled={status === 'uploading'}>
+            {status === 'uploading' ? 'अपलोड होत आहे...' : 'गौरव नोंद जोडा'}
+          </button>
+        </>
+      ) : (
+        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'flex-end' }}>
+          <div className="field" style={{ maxWidth: 260 }}>
+            <label style={{ fontSize: 12.5, fontWeight: 600 }}>
+              {isImage ? 'फोटो निवडा' : 'व्हिडिओ निवडा'}
+            </label>
+            <input
+              type="file"
+              name={fieldName}
+              accept={accept}
+              required
+              disabled={status === 'uploading'}
+            />
+          </div>
+          <div className="field" style={{ flex: 1, minWidth: 180 }}>
+            <label style={{ fontSize: 12.5, fontWeight: 600 }}>कॅप्शन</label>
+            <input
+              type="text"
+              name="caption"
+              placeholder={isImage ? 'उदा. शैक्षणिक साहित्य वितरण' : 'उदा. सायकल वाटप उपक्रम'}
+              disabled={status === 'uploading'}
+            />
+          </div>
+          <button className="btn btn-primary" type="submit" disabled={status === 'uploading'}>
+            {status === 'uploading' ? 'अपलोड होत आहे...' : 'जोडा'}
+          </button>
         </div>
-        <div className="field" style={{ flex: 1, minWidth: 180 }}>
-          <label style={{ fontSize: 12.5, fontWeight: 600 }}>कॅप्शन</label>
-          <input
-            type="text"
-            name="caption"
-            placeholder={isImage ? 'उदा. शैक्षणिक साहित्य वितरण' : 'उदा. सायकल वाटप उपक्रम'}
-            disabled={status === 'uploading'}
-          />
-        </div>
-        <button className="btn btn-primary" type="submit" disabled={status === 'uploading'}>
-          {status === 'uploading' ? 'अपलोड होत आहे...' : 'जोडा'}
-        </button>
-      </div>
+      )}
       <p style={{ fontSize: 11.5, color: '#777', marginTop: 8 }}>कमाल आकार: {maxLabel}</p>
       {status === 'error' && (
         <div

@@ -321,8 +321,7 @@ export default async function DashboardPage({ searchParams }) {
               <div style={{ background: '#fff', borderRadius: 14, padding: '22px 24px', boxShadow: '0 2px 14px rgba(0,0,0,0.06)', marginBottom: 24 }}>
                 <h2 style={{ margin: '0 0 4px', fontSize: 17 }}>नवीन गौरव / मान्यता जोडा</h2>
                 <p style={{ fontSize: 12.5, color: '#555', marginBottom: 18 }}>
-                  सध्याचे २ गौरव कार्ड कायम राहतात; इथे जोडलेल्या नोंदी "आपुलकीचे यश आणि मान्यता" विभागात त्यांच्यानंतर, आलटून पालटून
-                  (फोटो-डावीकडे / फोटो-उजवीकडे) दाखवल्या जातील. इमेज अपलोड करा आणि त्याखाली दिसणारे शीर्षक लिहा.
+                  इथे जोडलेली नोंद "आपुलकीचे यश आणि मान्यता" कॅरोसेलमध्ये आलटून पालटून दाखवली जाईल. फोटो, पिल टॅग (उदा. पुरस्कार/वृत्तपत्र नाव), मोठे केशरी शीर्षक आणि खाली दिसणारा सविस्तर परिच्छेद प्रविष्ट करा.
                 </p>
                 <AddMediaForm kind="achievement" tab="achievements" />
               </div>
@@ -344,12 +343,45 @@ export default async function DashboardPage({ searchParams }) {
                             <input type="hidden" name="action" value="edit_achievement" />
                             <input type="hidden" name="id" value={item.id} />
                             <input type="hidden" name="tab" value="achievements" />
-                            <textarea
-                              name="caption"
-                              defaultValue={item.caption}
-                              style={{ minHeight: 44, resize: 'vertical' }}
-                            />
-                            <button className="btn btn-outline" type="submit" style={{ width: '100%', marginTop: 6 }}>
+
+                            <div style={{ marginBottom: 6 }}>
+                              <label style={{ fontSize: 11, fontWeight: 600, color: '#555', display: 'block', marginBottom: 2 }}>
+                                पिल / बॅज मजकूर
+                              </label>
+                              <input
+                                type="text"
+                                name="tag"
+                                defaultValue={item.tag || 'सन्मान व गौरव'}
+                                style={{ width: '100%', padding: '6px 8px', borderRadius: 6, border: '1.5px solid #e2e2e6', fontSize: 12, boxSizing: 'border-box' }}
+                              />
+                            </div>
+
+                            <div style={{ marginBottom: 6 }}>
+                              <label style={{ fontSize: 11, fontWeight: 600, color: '#555', display: 'block', marginBottom: 2 }}>
+                                शीर्षक (मोठे केशरी अक्षरे) *
+                              </label>
+                              <input
+                                type="text"
+                                name="title"
+                                defaultValue={item.title || item.caption || ''}
+                                required
+                                style={{ width: '100%', padding: '6px 8px', borderRadius: 6, border: '1.5px solid #e2e2e6', fontSize: 12, fontWeight: 600, boxSizing: 'border-box' }}
+                              />
+                            </div>
+
+                            <div style={{ marginBottom: 6 }}>
+                              <label style={{ fontSize: 11, fontWeight: 600, color: '#555', display: 'block', marginBottom: 2 }}>
+                                सविस्तर परिच्छेद
+                              </label>
+                              <textarea
+                                name="description"
+                                defaultValue={item.description || ''}
+                                placeholder="सविस्तर परिच्छेद..."
+                                style={{ width: '100%', minHeight: 52, resize: 'vertical', padding: '6px 8px', borderRadius: 6, border: '1.5px solid #e2e2e6', fontSize: 12, boxSizing: 'border-box' }}
+                              />
+                            </div>
+
+                            <button className="btn btn-outline" type="submit" style={{ width: '100%', marginTop: 2 }}>
                               सेव्ह करा
                             </button>
                           </form>
@@ -357,7 +389,7 @@ export default async function DashboardPage({ searchParams }) {
                             <input type="hidden" name="action" value="delete_achievement" />
                             <input type="hidden" name="id" value={item.id} />
                             <input type="hidden" name="tab" value="achievements" />
-                            <button className="btn btn-danger" type="submit" style={{ width: '100%', marginTop: 6 }}>
+                            <button className="btn btn-danger" type="submit" style={{ width: '100%', marginTop: 4 }}>
                               काढा
                             </button>
                           </form>

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { upload } from '@vercel/blob/client';
 
 export default function AddMediaForm({ kind, category, tab }) {
   const [status, setStatus] = useState('idle'); // idle | uploading | error
@@ -9,8 +8,13 @@ export default function AddMediaForm({ kind, category, tab }) {
 
   const isImage = kind === 'image' || kind === 'achievement';
   const accept = isImage ? '.jpg,.jpeg,.png,.webp,.gif' : '.mp4,.webm,.mov';
-  const maxLabel = isImage ? '8MB' : '100MB';
-  const folder = kind === 'image' ? 'uploads/gallery' : kind === 'achievement' ? 'uploads/achievements' : 'uploads/videos';
+  const maxLabel = isImage ? '10MB' : '100MB';
+  const folder =
+    kind === 'image'
+      ? 'aapulki/gallery'
+      : kind === 'achievement'
+      ? 'aapulki/achievements'
+      : 'aapulki/videos';
   const fieldName = isImage ? 'image' : 'video';
 
   async function handleSubmit(e) {
@@ -29,17 +33,51 @@ export default function AddMediaForm({ kind, category, tab }) {
     setErrorMsg('');
 
     try {
-      const blob = await upload(`${folder}/${file.name}`, file, {
-        access: 'public',
-        handleUploadUrl: '/api/admin/blob-upload',
+      // 1. Get secure signature from our backend (NO preset needed!)
+      const signRes = await fetch('/api/admin/cloudinary-sign', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ folder }),
       });
 
+      if (!signRes.ok) {
+        const errData = await signRes.json().catch(() => ({}));
+        throw new Error(errData?.error || 'अपलोड स्वाक्षरी मिळवता आली नाही.');
+      }
+
+      const { signature, timestamp, apiKey, cloudName } = await signRes.json();
+
+      // 2. Upload directly from browser to Cloudinary via signed upload
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('api_key', apiKey);
+      formData.append('timestamp', timestamp);
+      formData.append('signature', signature);
+      formData.append('folder', folder);
+
+      const uploadRes = await fetch(
+        `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+        {
+          method: 'POST',
+          body: formData,
+        }
+      );
+
+      if (!uploadRes.ok) {
+        const errData = await uploadRes.json().catch(() => ({}));
+        throw new Error(errData?.error?.message || 'Cloudinary वर फाईल अपलोड अयशस्वी झाले.');
+      }
+
+      const uploadData = await uploadRes.json();
+      const mediaUrl = uploadData.secure_url;
+
+      // 3. Save metadata to /api/admin/add-item
       const res = await fetch('/api/admin/add-item', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           type: kind,
-          url: blob.url,
+          url: mediaUrl,
           caption,
           category,
         }),
@@ -69,7 +107,13 @@ export default function AddMediaForm({ kind, category, tab }) {
           <label style={{ fontSize: 12.5, fontWeight: 600 }}>
             {isImage ? 'फोटो निवडा' : 'व्हिडिओ निवडा'}
           </label>
-          <input type="file" name={fieldName} accept={accept} required disabled={status === 'uploading'} />
+          <input
+            type="file"
+            name={fieldName}
+            accept={accept}
+            required
+            disabled={status === 'uploading'}
+          />
         </div>
         <div className="field" style={{ flex: 1, minWidth: 180 }}>
           <label style={{ fontSize: 12.5, fontWeight: 600 }}>कॅप्शन</label>

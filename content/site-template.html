@@ -58,14 +58,20 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: 80px;
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   text-decoration: none;
+}
+
+.nav-logo img {
+  height: 62px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-icon {
@@ -79,16 +85,17 @@ nav {
 
 .logo-text h1 {
   font-family: 'Noto Serif Devanagari', serif;
-  font-size: 16px;
+  font-size: 21px;
   font-weight: 700;
   color: var(--orange-dark);
   line-height: 1.2;
+  letter-spacing: 0.2px;
 }
 
 .logo-text p {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--text-light);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .nav-links {
@@ -1661,7 +1668,7 @@ footer {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 70px;
+  top: 80px;
   left: 0; right: 0;
   background: white;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
@@ -1696,6 +1703,11 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .nav-inner { height: 72px; padding: 0 16px; }
+  .nav-logo img { height: 50px; }
+  .logo-text h1 { font-size: 17px; }
+  .logo-text p { font-size: 10px; }
+  .mobile-menu { top: 72px; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
 
@@ -2293,7 +2305,7 @@ footer {
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <img src="assets/transparewnt logo.png" alt="आपुलकी लोगो" style="height:50px;width:auto;object-fit:contain;">
+      <img src="assets/transparewnt logo.png" alt="आपुलकी लोगो" style="height:62px;width:auto;object-fit:contain;">
       <div class="logo-text">
         <h1>आपुलकी चॅरिटेबल ट्रस्ट</h1>
         <p>डोंबिवली, महाराष्ट्र | Est. 2023</p>
@@ -2307,7 +2319,6 @@ footer {
       <li><a href="#video">व्हिडिओ</a></li>
       <li><a href="#karyakarte">कार्यकर्ते</a></li>
       <li><a href="#volunteer">स्वयंसेवक</a></li>
-      <li><a href="#donate" class="btn-donate-nav"> <span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">favorite</span>देणगी द्या</a></li>
       <li><a href="#contact">संपर्क</a></li>
     </ul>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -2325,7 +2336,6 @@ footer {
   <a href="#video" onclick="closeMenu()">व्हिडिओ</a>
   <a href="#karyakarte" onclick="closeMenu()">आमचे कार्यकर्ते</a>
   <a href="#volunteer" onclick="closeMenu()">स्वयंसेवक</a>
-  <a href="#donate" onclick="closeMenu()">देणगी द्या</a>
   <a href="#contact" onclick="closeMenu()">संपर्क</a>
 </div>
 
@@ -2337,8 +2347,7 @@ footer {
 <div class="hero-eyebrow"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">trophy</span> राज्यस्तरीय सह्याद्री रत्न पुरस्कार २०२५ विजेता</div>    <h1 class="hero-title">माणुसकी जपणारी <br><span>आपुलकी</span></h1>
     <p class="hero-sub">शिक्षण, आरोग्य, रक्तदान, आपत्ती मदत आणि समाजकल्याणाच्या माध्यमातून समाजासाठी कार्यरत संस्था. डोंबिवलीपासून महाराष्ट्रभर पसरलेले आपुलकीचे जाळे.</p>
     <div class="hero-btns">
-    <a href="#donate" class="btn-primary"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">favorite</span>देणगी द्या</a>
-<a href="#volunteer" class="btn-outline"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">volunteer_activism</span>स्वयंसेवक बना</a>
+      <a href="#volunteer" class="btn-primary"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">volunteer_activism</span>स्वयंसेवक बना</a>
     </div>
   </div>
   </section>
@@ -2347,7 +2356,7 @@ footer {
 <div class="stats-bar">
   <div class="stats-bar-inner">
     <div class="stat-item-bar">
-      <h3>253+</h3>
+      <h3>600+</h3>
       <p>रक्तदाते</p>
     </div>
     <div class="stat-item-bar">
@@ -2495,7 +2504,7 @@ footer {
     <div class="impact-grid fade-in">
       <div class="impact-card">
         <span class="impact-icon"><span class="material-symbols-outlined">bloodtype</span></span>
-        <div class="impact-num" data-count="253">0</div>
+        <div class="impact-num" data-count="600">0</div>
         <div class="impact-label">रक्तदाते नेटवर्क<br>महाराष्ट्रभर</div>
       </div>
       <div class="impact-card">
@@ -2686,30 +2695,30 @@ footer {
         <div class="form-row">
           <div class="form-group">
             <label>पूर्ण नाव *</label>
-            <input type="text" placeholder="आपले पूर्ण नाव">
+            <input type="text" id="volName" placeholder="आपले पूर्ण नाव" required>
           </div>
           <div class="form-group">
             <label>मोबाईल क्रमांक *</label>
-            <input type="tel" placeholder="+91 XXXXX XXXXX">
+            <input type="tel" id="volPhone" placeholder="10 अंकी मोबाईल क्रमांक" maxlength="10" pattern="[0-9]{10}" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 10);" required>
           </div>
         </div>
         <div class="form-group">
           <label>ईमेल</label>
-          <input type="email" placeholder="email@example.com">
+          <input type="email" id="volEmail" placeholder="email@example.com">
         </div>
         <div class="form-row">
           <div class="form-group">
             <label>शहर *</label>
-            <input type="text" placeholder="डोंबिवली / मुंबई">
+            <input type="text" id="volCity" placeholder="डोंबिवली / मुंबई" required>
           </div>
           <div class="form-group">
             <label>व्यवसाय</label>
-            <input type="text" placeholder="विद्यार्थी / नोकरी">
+            <input type="text" id="volProfession" placeholder="विद्यार्थी / नोकरी">
           </div>
         </div>
         <div class="form-group">
           <label>संदेश</label>
-          <textarea placeholder="आपण कोणत्या क्षेत्रात योगदान देऊ इच्छिता?"></textarea>
+          <textarea id="volMessage" placeholder="आपण कोणत्या क्षेत्रात योगदान देऊ इच्छिता?"></textarea>
         </div>
         <button class="btn-submit" onclick="submitVolunteer()"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">volunteer_activism</span>स्वयंसेवक बना</button>
       </div>
@@ -2718,7 +2727,7 @@ footer {
 </section>
 
 <!-- DONATION -->
-<section class="donation-section" id="donate">
+<section class="donation-section" id="donate" style="display:none;">
   <div class="section-inner">
     <div class="section-header fade-in" style="text-align:center;">
       <div class="section-label">देणगी</div>
@@ -2911,7 +2920,7 @@ footer {
         <li><a href="#achievements">गौरव</a></li>
         <li><a href="#gallery">गॅलरी</a></li>
         <li><a href="#volunteer">स्वयंसेवक</a></li>
-        <li><a href="#donate">देणगी</a></li>
+        <!-- <li><a href="#donate">देणगी</a></li> -->
       </ul>
     </div>
 
@@ -2980,7 +2989,7 @@ footer {
           ८०G अंतर्गत करमुक्त देणग्या<br>
           <span style="color:var(--orange-light);font-weight:600;">AALTA2672BF20251</span>
         </li>
-        <li style="margin-top:8px;"><a href="#donate"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">favorite</span>देणगी द्या</a></li>
+        <!-- <li style="margin-top:8px;"><a href="#donate"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:6px;">favorite</span>देणगी द्या</a></li> -->
       </ul>
     </div>
 
@@ -3005,65 +3014,76 @@ const slides = document.querySelectorAll('.hero-slide');
 const dots = document.querySelectorAll('.dot');
 
 function goToSlide(n) {
-  slides[currentSlide].classList.remove('active');
-  dots[currentSlide].classList.remove('active');
+  if (!slides || slides.length === 0) return;
+  if (slides[currentSlide]) slides[currentSlide].classList.remove('active');
+  if (dots && dots[currentSlide]) dots[currentSlide].classList.remove('active');
   currentSlide = n;
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
+  if (slides[currentSlide]) slides[currentSlide].classList.add('active');
+  if (dots && dots[currentSlide]) dots[currentSlide].classList.add('active');
 }
 
-setInterval(() => {
-  goToSlide((currentSlide + 1) % slides.length);
-}, 4500);
+if (slides && slides.length > 0) {
+  setInterval(() => {
+    goToSlide((currentSlide + 1) % slides.length);
+  }, 4500);
+}
 
 // ─── MOBILE MENU ───
 function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
+  const menu = document.getElementById('mobileMenu');
+  if (menu) menu.classList.toggle('open');
 }
 function closeMenu() {
-  document.getElementById('mobileMenu').classList.remove('open');
+  const menu = document.getElementById('mobileMenu');
+  if (menu) menu.classList.remove('open');
 }
 
 // ─── SCROLL ANIMATIONS ───
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.12 });
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+} else {
+  document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+}
 
 // ─── COUNTER ANIMATION ───
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting && !e.target.dataset.animated) {
-      e.target.dataset.animated = true;
-      const target = parseInt(e.target.dataset.count);
-      const suffix = target > 99 ? '+' : (target > 4 ? '+' : '+');
-      let start = 0;
-      const step = Math.ceil(target / 60);
-      const timer = setInterval(() => {
-        start += step;
-        if (start >= target) {
-          e.target.textContent = target + suffix;
-          clearInterval(timer);
-        } else {
-          e.target.textContent = start + suffix;
-        }
-      }, 30);
-    }
-  });
-}, { threshold: 0.5 });
+if ('IntersectionObserver' in window) {
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !e.target.dataset.animated) {
+        e.target.dataset.animated = true;
+        const target = parseInt(e.target.dataset.count) || 0;
+        const suffix = target > 99 ? '+' : (target > 4 ? '+' : '+');
+        let start = 0;
+        const step = Math.ceil(target / 60);
+        const timer = setInterval(() => {
+          start += step;
+          if (start >= target) {
+            e.target.textContent = target + suffix;
+            clearInterval(timer);
+          } else {
+            e.target.textContent = start + suffix;
+          }
+        }, 30);
+      }
+    });
+  }, { threshold: 0.5 });
 
-document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+  document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+}
 
 // ─── GALLERY FILTER ───
 function filterGallery(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.gallery-item').forEach(item => {
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('.gallery-item, .initiative-image-card').forEach(item => {
     item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'block' : 'none';
   });
 }
@@ -3071,295 +3091,72 @@ function filterGallery(cat, btn) {
 // ─── DONATION TIER SELECTOR ───
 function selectTier(el) {
   document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
+  if (el) el.classList.add('selected');
 }
 
 // ─── FORM SUBMISSIONS ───
 function submitVolunteer() {
-  alert('धन्यवाद! आपली नोंदणी यशस्वी झाली. आपुलकीची टीम लवकरच आपल्याशी संपर्क करेल. 🙏');
+  const name = (document.getElementById('volName') ? document.getElementById('volName').value : '').trim();
+  const phone = (document.getElementById('volPhone') ? document.getElementById('volPhone').value : '').trim();
+  const email = (document.getElementById('volEmail') ? document.getElementById('volEmail').value : '').trim();
+  const city = (document.getElementById('volCity') ? document.getElementById('volCity').value : '').trim();
+  const profession = (document.getElementById('volProfession') ? document.getElementById('volProfession').value : '').trim();
+  const message = (document.getElementById('volMessage') ? document.getElementById('volMessage').value : '').trim();
+
+  if (!name) {
+    alert('कृपया आपले पूर्ण नाव प्रविष्ट करा.');
+    const el = document.getElementById('volName');
+    if (el) el.focus();
+    return;
+  }
+
+  let cleanPhone = phone.replace(/\D/g, '');
+  if (cleanPhone.length === 12 && cleanPhone.startsWith('91')) {
+    cleanPhone = cleanPhone.slice(2);
+  } else if (cleanPhone.length === 11 && cleanPhone.startsWith('0')) {
+    cleanPhone = cleanPhone.slice(1);
+  }
+
+  if (!cleanPhone || cleanPhone.length !== 10) {
+    alert('कृपया 10 अंकी वैध मोबाईल क्रमांक प्रविष्ट करा.');
+    const el = document.getElementById('volPhone');
+    if (el) el.focus();
+    return;
+  }
+  if (!city) {
+    alert('कृपया आपले शहर प्रविष्ट करा.');
+    const el = document.getElementById('volCity');
+    if (el) el.focus();
+    return;
+  }
+
+  const text = `*नवीन स्वयंसेवक नोंदणी - आपुलकी चॅरिटेबल ट्रस्ट*\n\n` +
+    `*नाव:* ${name}\n` +
+    `*मोबाईल:* ${cleanPhone}\n` +
+    `*ईमेल:* ${email || 'उपलब्ध नाही'}\n` +
+    `*शहर:* ${city}\n` +
+    `*व्यवसाय:* ${profession || 'उपलब्ध नाही'}\n` +
+    `*संदेश:* ${message || 'उपलब्ध नाही'}`;
+
+  const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+  const encodedText = encodeURIComponent(text);
+
+  if (isMobile) {
+    window.location.href = `whatsapp://send?phone=917045187390&text=${encodedText}`;
+  } else {
+    const waUrl = `https://wa.me/917045187390?text=${encodedText}`;
+    const win = window.open(waUrl, '_blank');
+    if (!win || win.closed || typeof win.closed === 'undefined') {
+      window.location.href = waUrl;
+    }
+  }
 }
 function submitContact() {
   alert('आपला संदेश मिळाला. आम्ही लवकरच उत्तर देऊ. धन्यवाद! 🙏');
 }
-
-// ─── GALLERY LIGHTBOX ───
-let galleryImages = [];
-let currentLightboxIndex = 0;
-
-function buildGalleryIndex() {
-  galleryImages = [];
-  document.querySelectorAll('#galleryGrid .gallery-item').forEach(item => {
-    if (item.style.display !== 'none') {
-      const img = item.querySelector('img');
-      const cap = item.querySelector('.gallery-overlay p');
-      galleryImages.push({ src: img.src, caption: cap ? cap.textContent : '' });
-    }
-  });
-}
-
-function openLightbox(index) {
-  buildGalleryIndex();
-  currentLightboxIndex = index;
-  showLightboxImage();
-  const lb = document.getElementById('lightbox');
-  lb.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function showLightboxImage() {
-  document.getElementById('lightboxImg').src = galleryImages[currentLightboxIndex].src;
-  document.getElementById('lightboxCaption').textContent = galleryImages[currentLightboxIndex].caption;
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
-  document.body.style.overflow = '';
-}
-
-function prevImg() {
-  currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
-  showLightboxImage();
-}
-function nextImg() {
-  currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
-  showLightboxImage();
-}
-
-document.getElementById('lightbox').addEventListener('click', function(e) {
-  if (e.target === this) closeLightbox();
-});
-
-document.addEventListener('keydown', function(e) {
-  const lb = document.getElementById('lightbox');
-  if (lb.style.display === 'flex') {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') prevImg();
-    if (e.key === 'ArrowRight') nextImg();
-  }
-});
-
-/* // Attach click to gallery items
-document.querySelectorAll('#galleryGrid .gallery-item').forEach((item, index) => {
-  item.addEventListener('click', () => {
-    buildGalleryIndex();
-    const visibleItems = Array.from(document.querySelectorAll('#galleryGrid .gallery-item')).filter(i => i.style.display !== 'none');
-    const visibleIndex = visibleItems.indexOf(item);
-    openLightbox(visibleIndex >= 0 ? visibleIndex : 0);
-  });
-});
-
-*/
-
-const videoTrack = document.getElementById('videoTrack');
-const prev = document.getElementById('videoPrev');
-const next = document.getElementById('videoNext');
-
-let currentSlide = 0;
-
-function visibleVideos(){
-  return window.innerWidth <= 768 ? 1 : 3;
-}
-
-function updateVideoCarousel(){
-
-  const cards = document.querySelectorAll('.video-card');
-  const gap = 24;
-
-  if(cards.length === 0) return;
-
-  const width = cards[0].offsetWidth + gap;
-
-  videoTrack.style.transform =
-    `translateX(-${currentSlide * width}px)`;
-
-  prev.disabled = currentSlide === 0;
-
-  next.disabled =
-    currentSlide >= cards.length - visibleVideos();
-}
-
-next.addEventListener('click', () => {
-
-  const cards = document.querySelectorAll('.video-card');
-
-  if(currentSlide < cards.length - visibleVideos()){
-    currentSlide++;
-    updateVideoCarousel();
-  }
-});
-
-prev.addEventListener('click', () => {
-
-  if(currentSlide > 0){
-    currentSlide--;
-    updateVideoCarousel();
-  }
-});
-
-window.addEventListener('resize', updateVideoCarousel);
-window.addEventListener('load', updateVideoCarousel);
-
-function scrollVideos(direction){
-
-  const container =
-    document.getElementById('videoContainer');
-
-  const card =
-    container.querySelector('.video-card');
-
-  const width =
-    card.offsetWidth + 24;
-
-  container.scrollBy({
-    left: direction * width,
-    behavior: 'smooth'
-  });
-
-}
 </script>
 
-<script>
-// ─── HERO SLIDER ───
-let currentSlide = 0;
-const slides = document.querySelectorAll('.hero-slide');
-const dots = document.querySelectorAll('.dot');
 
-function goToSlide(n) {
-  slides[currentSlide].classList.remove('active');
-  dots[currentSlide].classList.remove('active');
-  currentSlide = n;
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
-}
-
-setInterval(() => {
-  goToSlide((currentSlide + 1) % slides.length);
-}, 4500);
-
-// ─── MOBILE MENU ───
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
-function closeMenu() {
-  document.getElementById('mobileMenu').classList.remove('open');
-}
-
-// ─── SCROLL ANIMATIONS ───
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// ─── COUNTER ANIMATION ───
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting && !e.target.dataset.animated) {
-      e.target.dataset.animated = true;
-      const target = parseInt(e.target.dataset.count);
-      const suffix = target > 99 ? '+' : (target > 4 ? '+' : '+');
-      let start = 0;
-      const step = Math.ceil(target / 60);
-      const timer = setInterval(() => {
-        start += step;
-        if (start >= target) {
-          e.target.textContent = target + suffix;
-          clearInterval(timer);
-        } else {
-          e.target.textContent = start + suffix;
-        }
-      }, 30);
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
-
-// ─── GALLERY FILTER ───
-function filterGallery(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.gallery-item').forEach(item => {
-    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'block' : 'none';
-  });
-}
-
-// ─── DONATION TIER SELECTOR ───
-function selectTier(el) {
-  document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-}
-
-// ─── FORM SUBMISSIONS ───
-function submitVolunteer() {
-  alert('धन्यवाद! आपली नोंदणी यशस्वी झाली. आपुलकीची टीम लवकरच आपल्याशी संपर्क करेल. 🙏');
-}
-function submitContact() {
-  alert('आपला संदेश मिळाला. आम्ही लवकरच उत्तर देऊ. धन्यवाद! 🙏');
-}
-
-// ─── GALLERY LIGHTBOX ───
-let galleryImages = [];
-let currentLightboxIndex = 0;
-
-function buildGalleryIndex() {
-  galleryImages = [];
-  document.querySelectorAll('#galleryGrid .gallery-item').forEach(item => {
-    if (item.style.display !== 'none') {
-      const img = item.querySelector('img');
-      const cap = item.querySelector('.gallery-overlay p');
-      galleryImages.push({ src: img.src, caption: cap ? cap.textContent : '' });
-    }
-  });
-}
-
-function openLightbox(index) {
-  buildGalleryIndex();
-  currentLightboxIndex = index;
-  showLightboxImage();
-  const lb = document.getElementById('lightbox');
-  lb.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function showLightboxImage() {
-  document.getElementById('lightboxImg').src = galleryImages[currentLightboxIndex].src;
-  document.getElementById('lightboxCaption').textContent = galleryImages[currentLightboxIndex].caption;
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
-  document.body.style.overflow = '';
-}
-
-function prevImg() {
-  currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
-  showLightboxImage();
-}
-function nextImg() {
-  currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
-  showLightboxImage();
-}
-
-document.getElementById('lightbox').addEventListener('click', function(e) {
-  if (e.target === this) closeLightbox();
-});
-
-document.addEventListener('keydown', function(e) {
-  const lb = document.getElementById('lightbox');
-  if (lb.style.display === 'flex') {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') prevImg();
-    if (e.key === 'ArrowRight') nextImg();
-  }
-});
-
-
-</script>
 
 <script>
 const container = document.getElementById('videoContainer');

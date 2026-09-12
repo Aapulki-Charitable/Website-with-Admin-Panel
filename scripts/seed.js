@@ -1,22 +1,20 @@
 /**
- * One-time seed script.
+ * One-time seed script for Cloudinary.
  *
- * Populates your Blob storage with the original gallery photos and videos
- * from your site (so the homepage isn't empty on first deploy), all
- * pointing at the single `assets/` folder.
+ * Populates your Cloudinary account with the original gallery photos and videos
+ * from your site (so the homepage isn't empty on first deploy), pointing at
+ * the local `assets/` folder.
  *
  * Usage:
- *   1. Make sure .env.local has a real BLOB_READ_WRITE_TOKEN in it
- *      (see README-VERCEL-SETUP.md for how to get one).
+ *   1. Make sure .env.local has your Cloudinary credentials
+ *      (see README-CLOUDINARY-SETUP.md for how to get them).
  *   2. Run:  npm run seed
  *
- * Safe to run more than once — it always overwrites data/gallery.json and
- * data/videos.json with this exact list. If you've already added/edited
- * things from the admin dashboard, running this again will wipe those
- * changes back to the originals below, so only run it once, early on.
+ * Safe to run more than once — it overwrites aapulki/data/gallery.json and
+ * aapulki/data/videos.json in Cloudinary.
  */
 require('dotenv').config({ path: '.env.local' });
-const { put } = require('@vercel/blob');
+const cloudinary = require('cloudinary').v2;
 
 const gallery = [
   { id: 'g1001', category: 'shikshan', image: 'assets/edu things donation.png', caption: 'शैक्षणिक साहित्य वितरण' },
@@ -51,31 +49,44 @@ const videos = [
 ];
 
 async function main() {
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+  const cloudName =
+    process.env.CLOUDINARY_CLOUD_NAME || process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const apiKey = process.env.CLOUDINARY_API_KEY;
+  const apiSecret = process.env.CLOUDINARY_API_SECRET;
+
+  if (!cloudName || !apiKey || !apiSecret) {
     console.error(
-      '\n❌ Missing BLOB_READ_WRITE_TOKEN.\n' +
-        'Add it to .env.local first (see README-VERCEL-SETUP.md), then re-run: npm run seed\n'
+      '\n❌ Missing Cloudinary credentials in .env.local.\n' +
+        'Please set NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET first (see README-CLOUDINARY-SETUP.md), then re-run: npm run seed\n'
     );
     process.exit(1);
   }
 
-  await put('data/gallery.json', JSON.stringify(gallery, null, 2), {
-    access: 'public',
-    contentType: 'application/json',
-    addRandomSuffix: false,
-    allowOverwrite: true,
+  cloudinary.config({
+    cloud_name: cloudName,
+    api_key: apiKey,
+    api_secret: apiSecret,
+    secure: true,
   });
-  console.log(`✔ Seeded ${gallery.length} gallery photos`);
 
-  await put('data/videos.json', JSON.stringify(videos, null, 2), {
-    access: 'public',
-    contentType: 'application/json',
-    addRandomSuffix: false,
-    allowOverwrite: true,
-  });
-  console.log(`✔ Seeded ${videos.length} videos`);
+  async function uploadRawJson(publicId, data) {
+    const base64 = Buffer.from(JSON.stringify(data, null, 2)).toString('base64');
+    const dataUri = `data:application/json;base64,${base64}`;
+    await cloudinary.uploader.upload(dataUri, {
+      resource_type: 'raw',
+      public_id: publicId,
+      overwrite: true,
+      invalidate: true,
+    });
+  }
 
-  console.log('\nDone. Your homepage gallery/videos should now show up.');
+  await uploadRawJson('aapulki/data/gallery.json', gallery);
+  console.log(`✔ Seeded ${gallery.length} gallery photos to Cloudinary`);
+
+  await uploadRawJson('aapulki/data/videos.json', videos);
+  console.log(`✔ Seeded ${videos.length} videos to Cloudinary`);
+
+  console.log('\nDone. Your homepage gallery/videos are ready in Cloudinary!');
 }
 
 main().catch((err) => {

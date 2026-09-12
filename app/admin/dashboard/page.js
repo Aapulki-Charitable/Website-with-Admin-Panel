@@ -35,6 +35,7 @@ export default async function DashboardPage({ searchParams }) {
   const videos = Array.isArray(videosRaw) ? videosRaw : [];
   const achievements = Array.isArray(achievementsRaw) ? achievementsRaw : [];
   const content = {
+    heroBgImage: 'assets/HERO SECTION IMAGE.jpg',
     aboutImage: 'assets/253 donors.png',
     aboutImageName: 'मा. श्री. प्रशांत लहू देसाई',
     aboutImageRole: 'अध्यक्ष, आपुलकी चॅरिटेबल ट्रस्ट',
@@ -241,6 +242,24 @@ export default async function DashboardPage({ searchParams }) {
 
           {activeTab === 'content' && (
             <>
+              <div style={{ background: '#fff', borderRadius: 14, padding: '22px 24px', boxShadow: '0 2px 14px rgba(0,0,0,0.06)', marginBottom: 24 }}>
+                <h2 style={{ margin: '0 0 4px', fontSize: 17 }}>मुख्य "हिरो सेक्शन" पार्श्वभूमी (Background) फोटो</h2>
+                <p style={{ fontSize: 12.5, color: '#555', marginBottom: 18 }}>
+                  होमपेजवरील मुख्य बॅनर/हिरो विभागाच्या मागे दिसणारा पार्श्वभूमी फोटो.
+                </p>
+                <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={content.heroBgImage || 'assets/HERO SECTION IMAGE.jpg'}
+                    alt="हिरो बॅकग्राऊंड"
+                    style={{ width: 220, height: 110, objectFit: 'cover', borderRadius: 12, background: '#eee', flexShrink: 0 }}
+                  />
+                  <div style={{ flex: 1, minWidth: 240 }}>
+                    <SingleImageForm field="heroBgImage" tab="content" />
+                  </div>
+                </div>
+              </div>
+
               <div style={{ background: '#fff', borderRadius: 14, padding: '22px 24px', boxShadow: '0 2px 14px rgba(0,0,0,0.06)', marginBottom: 24 }}>
                 <h2 style={{ margin: '0 0 4px', fontSize: 17 }}>"आपुलकी बद्दल" विभागातील फोटो</h2>
                 <p style={{ fontSize: 12.5, color: '#555', marginBottom: 18 }}>

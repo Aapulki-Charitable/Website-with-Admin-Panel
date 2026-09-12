@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { isLoggedIn } from '../../../../lib/auth';
 import { getContent, saveContent, deleteFileIfOwned } from '../../../../lib/blob';
 
-const ALLOWED_FIELDS = ['aboutImage', 'karyakarteImage'];
+const ALLOWED_FIELDS = ['aboutImage', 'karyakarteImage', 'heroBgImage'];
 
 export async function POST(request) {
   if (!(await isLoggedIn())) {

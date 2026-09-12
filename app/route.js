@@ -95,7 +95,8 @@ export async function GET() {
     .replace('{{POINTS_SHIKSHAN}}', renderPoints(content.points.shikshan))
     .replace('{{POINTS_AROGYA}}', renderPoints(content.points.arogya))
     .replace('{{POINTS_SAMAJ}}', renderPoints(content.points.samaj))
-    .replace('{{ACHIEVEMENTS_EXTRA}}', renderAchievementItems(achievements));
+    .replace('{{ACHIEVEMENTS_EXTRA}}', renderAchievementItems(achievements))
+    .replace('{{HERO_BG_IMAGE}}', escapeHtml(content.heroBgImage || 'assets/HERO SECTION IMAGE.jpg'));
 
   return new Response(html, {
     status: 200,

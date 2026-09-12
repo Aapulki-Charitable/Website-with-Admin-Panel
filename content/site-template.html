@@ -728,6 +728,106 @@ section {
   display: block;
 }
 
+/* ─── ACHIEVEMENTS CAROUSEL ─── */
+.ach-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 24px;
+  touch-action: pan-y;
+}
+
+.ach-carousel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+  align-items: stretch;
+}
+
+.achievement-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.achievement-slide .award-showcase {
+  margin-bottom: 0;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ach-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(245, 124, 0, 0.35);
+  color: var(--orange-dark);
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ach-nav-btn:hover {
+  background: var(--orange);
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 28px rgba(245, 124, 0, 0.45);
+}
+
+.ach-prev { left: 14px; }
+.ach-next { right: 14px; }
+
+.ach-dots-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.ach-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffd59e;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.ach-dot.active {
+  width: 30px;
+  border-radius: 20px;
+  background: var(--orange);
+  box-shadow: 0 2px 8px rgba(245, 124, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .ach-nav-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  .ach-prev { left: 8px; }
+  .ach-next { right: 8px; }
+}
+
 /* ─── ACHIEVEMENTS ─── */
 .award-showcase {
   background: linear-gradient(135deg, #FFF8E7, #FFF3D0);
@@ -1726,11 +1826,13 @@ footer {
   .gallery-item:nth-child(5n+1) { grid-row: span 1; }
   .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
   .about-values { grid-template-columns: 1fr; }
+  .award-showcase { padding: 32px 20px; }
   .award-grid,
   .award-grid.reverse { grid-template-columns: 1fr; gap: 24px; }
   .award-img { width: 100%; max-width: 200px; }
   /* on a single column always show the photo first, whichever side it sits on */
-  .award-grid.reverse .award-media { order: -1; }
+  .award-grid.reverse .award-media,
+  .award-grid.reverse .award-img { order: -1; }
   .award-media { justify-self: start; }
   .award-media img { max-height: 300px; }
   .form-row { grid-template-columns: 1fr; }
@@ -2546,60 +2648,71 @@ footer {
       <p class="section-sub" style="margin:0 auto;">समाजाच्या सेवेला मिळालेली राष्ट्रीय पोचपावती</p>
     </div>
 
-    <div class="award-showcase fade-in">
-      <div class="award-grid">
-        <div class="award-img" style="background:none;padding:0;overflow:hidden;border-radius:16px;">
-          <img src="assets/awards.jpg" alt="सह्याद्री रत्न पुरस्कार २०२५" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
-        </div>
-        <div>
-          <div class="award-badge-tag">राज्यस्तरीय पुरस्कार • २०२५</div>
-          <h3 class="award-title">सह्याद्री रत्न पुरस्कार २०२५</h3>
-          <div class="award-recipient">
-            <strong>मा. श्री. प्रशांत लहू देसाई</strong><br>
-            अध्यक्ष, आपुलकी चॅरिटेबल ट्रस्ट, डोंबिवली
+    <div class="ach-carousel-wrapper fade-in" id="achievementsWrapper">
+      <button class="ach-nav-btn ach-prev" onclick="prevAchievementSlide()" aria-label="मागील" id="achPrevBtn">❮</button>
+      <button class="ach-nav-btn ach-next" onclick="nextAchievementSlide()" aria-label="पुढील" id="achNextBtn">❯</button>
+
+      <div class="ach-carousel-track" id="achievementsTrack">
+        <!-- Slide 1: Sahyadri Ratna (img left) -->
+        <div class="achievement-slide">
+          <div class="award-showcase">
+            <div class="award-grid">
+              <div class="award-img" style="background:none;padding:0;overflow:hidden;border-radius:16px;">
+                <img src="assets/awards.jpg" alt="सह्याद्री रत्न पुरस्कार २०२५" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
+              </div>
+              <div>
+                <div class="award-badge-tag">राज्यस्तरीय पुरस्कार • २०२५</div>
+                <h3 class="award-title">सह्याद्री रत्न पुरस्कार २०२५</h3>
+                <div class="award-recipient">
+                  <strong>मा. श्री. प्रशांत लहू देसाई</strong><br>
+                  अध्यक्ष, आपुलकी चॅरिटेबल ट्रस्ट, डोंबिवली
+                </div>
+                <p class="award-desc">महाराष्ट्रातील सामाजिक कार्यासाठी दिल्या जाणाऱ्या प्रतिष्ठित राज्यस्तरीय सह्याद्री रत्न पुरस्काराने आपुलकीचे अध्यक्ष मा. श्री. प्रशांत लहू देसाई यांना सन्मानित करण्यात आले. शिक्षण, आरोग्य आणि रक्तदान क्षेत्रातील उल्लेखनीय कार्यासाठी हा पुरस्कार प्रदान करण्यात आला.</p>
+                <div class="award-meta">
+                  <div class="award-meta-item"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">calendar_month</span> <span>वर्ष २०२५</span></div>
+                  <div class="award-meta-item"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">location_on</span> <span>महाराष्ट्र</span></div>
+                  <div class="award-meta-item"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">military_tech</span> <span>राज्यस्तरीय मान्यता</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="award-desc">महाराष्ट्रातील सामाजिक कार्यासाठी दिल्या जाणाऱ्या प्रतिष्ठित राज्यस्तरीय सह्याद्री रत्न पुरस्काराने आपुलकीचे अध्यक्ष मा. श्री. प्रशांत लहू देसाई यांना सन्मानित करण्यात आले. शिक्षण, आरोग्य आणि रक्तदान क्षेत्रातील उल्लेखनीय कार्यासाठी हा पुरस्कार प्रदान करण्यात आला.</p>
-          <div class="award-meta">
-            <div class="award-meta-item"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">calendar_month</span> <span>वर्ष २०२५</span></div>
-<div class="award-meta-item"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">location_on</span> <span>महाराष्ट्र</span></div>
-<div class="award-meta-item"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">military_tech</span> <span>राज्यस्तरीय मान्यता</span></div>
+        </div>
+
+        <!-- Slide 2: Thane Varta (text left, img right -> reverse) -->
+        <div class="achievement-slide">
+          <div class="award-showcase">
+            <div class="award-grid reverse">
+              <!-- TEXT -->
+              <div>
+                <div class="award-badge-tag"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">newspaper</span> ठाणे वार्ता • २६ जून २०२५</div>
+                <h3 class="award-title">
+                  विद्यार्थ्यांना सायकली व शैक्षणिक साहित्याचे वाटप
+                </h3>
+                <p class="award-desc">
+                  आपुलकी चॅरिटेबल ट्रस्टतर्फे पालघर जिल्ह्यातील विद्यार्थ्यांना मोफत
+                  सायकली व शैक्षणिक साहित्याचे वाटप करण्यात आले. शिक्षणासाठी दररोज
+                  लांब अंतराचा प्रवास करणाऱ्या विद्यार्थ्यांना या उपक्रमाचा मोठा लाभ
+                  झाला असून स्थानिक स्तरावर त्याचे उत्स्फूर्त स्वागत करण्यात आले.
+                </p>
+              </div>
+
+              <!-- IMAGE -->
+              <div class="award-img" style="width:650px;height:260px;background:none;padding:0;overflow:hidden;border-radius:16px;width:90%;height:90%;object-fit:contain;margin:auto;display:block;">
+                <img
+                  src="assets/news article.jpg"
+                  alt="विद्यार्थ्यांना सायकली व शैक्षणिक साहित्याचे वाटप"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:16px;"
+                >
+              </div>
+            </div>
           </div>
         </div>
+
+        {{ACHIEVEMENTS_EXTRA}}
       </div>
+
+      <div class="ach-dots-container" id="achievementsDots"></div>
     </div>
-
-
-<div class="award-showcase fade-in">
-  <div class="award-grid">
-
-    <!-- TEXT -->
-    <div>
-<div class="award-badge-tag"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">newspaper</span> ठाणे वार्ता • २६ जून २०२५</div>
-      <h3 class="award-title">
-        विद्यार्थ्यांना सायकली व शैक्षणिक साहित्याचे वाटप
-      </h3>
-
-      <p class="award-desc">
-        आपुलकी चॅरिटेबल ट्रस्टतर्फे पालघर जिल्ह्यातील विद्यार्थ्यांना मोफत
-        सायकली व शैक्षणिक साहित्याचे वाटप करण्यात आले. शिक्षणासाठी दररोज
-        लांब अंतराचा प्रवास करणाऱ्या विद्यार्थ्यांना या उपक्रमाचा मोठा लाभ
-        झाला असून स्थानिक स्तरावर त्याचे उत्स्फूर्त स्वागत करण्यात आले.
-      </p>
-    </div>
-
-    <!-- IMAGE -->
-    <div class="award-img" style="width:650px;height:260px;background:none;padding:0;overflow:hidden;border-radius:16px;width:90%;height:90%;object-fit:contain;margin:auto;display:block;">
-      <img
-        src="assets/news article.jpg"
-        alt="विद्यार्थ्यांना सायकली व शैक्षणिक साहित्याचे वाटप"
-        style="width:100%;height:100%;object-fit:cover;border-radius:16px;"
-      >
-    </div>
-
-  </div>
-</div>
-
-    {{ACHIEVEMENTS_EXTRA}}
   </div>
 
 </section>
@@ -3334,6 +3447,127 @@ function toggleVideo(video) {
       openSingle(img.src, t.cap);
     });
   });
+})();
+</script>
+
+<script>
+/* ─── ACHIEVEMENTS CAROUSEL ─── */
+(function() {
+  const wrapper = document.getElementById('achievementsWrapper');
+  const track = document.getElementById('achievementsTrack');
+  const dotsContainer = document.getElementById('achievementsDots');
+  const prevBtn = document.getElementById('achPrevBtn');
+  const nextBtn = document.getElementById('achNextBtn');
+
+  if (!wrapper || !track) return;
+
+  const slides = Array.from(track.querySelectorAll('.achievement-slide'));
+  const total = slides.length;
+  if (total <= 1) {
+    if (prevBtn) prevBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
+    if (dotsContainer) dotsContainer.style.display = 'none';
+    return;
+  }
+
+  let currentIndex = 0;
+  let autoPlayTimer = null;
+  const INTERVAL = 5500;
+
+  // Build dots
+  if (dotsContainer) {
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'ach-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', () => {
+        goToSlide(i);
+        restartAutoPlay();
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  function updateSlide(index) {
+    currentIndex = (index + total) % total;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    if (dotsContainer) {
+      const dots = dotsContainer.querySelectorAll('.ach-dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+  }
+
+  window.nextAchievementSlide = function() {
+    updateSlide(currentIndex + 1);
+    restartAutoPlay();
+  };
+
+  window.prevAchievementSlide = function() {
+    updateSlide(currentIndex - 1);
+    restartAutoPlay();
+  };
+
+  function goToSlide(index) {
+    updateSlide(index);
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayTimer = setInterval(() => {
+      updateSlide(currentIndex + 1);
+    }, INTERVAL);
+  }
+
+  function stopAutoPlay() {
+    if (autoPlayTimer) {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = null;
+    }
+  }
+
+  function restartAutoPlay() {
+    stopAutoPlay();
+    startAutoPlay();
+  }
+
+  // Pause on hover
+  wrapper.addEventListener('mouseenter', stopAutoPlay);
+  wrapper.addEventListener('mouseleave', startAutoPlay);
+
+  // Touch Swipe Support
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+
+  wrapper.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  wrapper.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const deltaX = touchStartX - touchEndX;
+    const deltaY = touchStartY - touchEndY;
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+      if (deltaX > 0) {
+        window.nextAchievementSlide();
+      } else {
+        window.prevAchievementSlide();
+      }
+    }
+  }
+
+  // Start autoplay initially
+  startAutoPlay();
 })();
 </script>
 

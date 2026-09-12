@@ -34,10 +34,15 @@ function renderAchievementItems(items) {
       const media = `<div class="award-media"><img src="${escapeHtml(a.image)}" alt="${escapeHtml(
         a.caption
       )}"></div>`;
-      const text = `<div><h3 class="award-title">${escapeHtml(a.caption)}</h3></div>`;
-      return `<div class="award-showcase fade-in">
-  <div class="award-grid${reverse ? ' reverse' : ''}">
-    ${reverse ? text + media : media + text}
+      const text = `<div>
+        <div class="award-badge-tag"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">military_tech</span> सन्मान व गौरव</div>
+        <h3 class="award-title">${escapeHtml(a.caption)}</h3>
+      </div>`;
+      return `<div class="achievement-slide">
+  <div class="award-showcase">
+    <div class="award-grid${reverse ? ' reverse' : ''}">
+      ${reverse ? text + media : media + text}
+    </div>
   </div>
 </div>`;
     })

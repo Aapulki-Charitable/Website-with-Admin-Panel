@@ -40,6 +40,7 @@ export default async function DashboardPage({ searchParams }) {
     aboutImageName: 'मा. श्री. प्रशांत लहू देसाई',
     aboutImageRole: 'अध्यक्ष, आपुलकी चॅरिटेबल ट्रस्ट',
     karyakarteImage: 'assets/amche karyakarte.jpg',
+    marqueeText: '',
     points: {
       shikshan: [],
       arogya: [],
@@ -242,6 +243,84 @@ export default async function DashboardPage({ searchParams }) {
 
           {activeTab === 'content' && (
             <>
+              {/* Marquee Announcement Bar */}
+              <div style={{ background: '#fff', borderRadius: 14, padding: '22px 24px', boxShadow: '0 2px 14px rgba(0,0,0,0.06)', marginBottom: 24 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10, marginBottom: 6 }}>
+                  <h2 style={{ margin: 0, fontSize: 17, display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span className="material-symbols-outlined" style={{ color: '#F57C00' }}>campaign</span>
+                    महत्त्वाची सूचना पट्टी (Marquee Announcement Bar)
+                  </h2>
+                  {content.marqueeText ? (
+                    <span style={{ background: '#e7f6e8', color: '#256029', padding: '4px 12px', borderRadius: 50, fontSize: 12, fontWeight: 600 }}>
+                      ● सुरु आहे (Active)
+                    </span>
+                  ) : (
+                    <span style={{ background: '#f1f2f4', color: '#777', padding: '4px 12px', borderRadius: 50, fontSize: 12, fontWeight: 600 }}>
+                      ○ बंद / लपवलेली (No Marquee)
+                    </span>
+                  )}
+                </div>
+                <p style={{ fontSize: 12.5, color: '#555', marginBottom: 16 }}>
+                  वेबसाईटच्या शीर्षस्थानी फिरणारी केसरी रंगाची सूचना पट्टी (Orange Marquee). येथे मजकूर टाकल्यास पट्टी आपोआप दिसेल. मजकूर रिकामा ठेवल्यास पट्टी पूर्णपणे लपवली जाईल.
+                </p>
+
+                {content.marqueeText && (
+                  <div style={{
+                    background: 'linear-gradient(90deg, #F57C00, #E65100)',
+                    color: '#fff',
+                    borderRadius: 8,
+                    padding: '10px 16px',
+                    fontSize: 13.5,
+                    fontWeight: 600,
+                    marginBottom: 16,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    boxShadow: '0 2px 8px rgba(245,124,0,0.25)',
+                  }}>
+                    <span style={{ fontSize: 16 }}>📢</span>
+                    <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {content.marqueeText}
+                    </span>
+                    <span style={{ fontSize: 11, background: 'rgba(255,255,255,0.2)', padding: '2px 8px', borderRadius: 20 }}>
+                      लाईव्ह प्रिव्ह्यू
+                    </span>
+                  </div>
+                )}
+
+                <form method="POST" action="/api/admin/actions">
+                  <input type="hidden" name="action" value="update_marquee" />
+                  <input type="hidden" name="tab" value="content" />
+                  <div className="field">
+                    <label style={{ fontSize: 12.5, fontWeight: 600, marginBottom: 6, display: 'block' }}>
+                      सूचनेचा मजकूर (Marquee Text):
+                    </label>
+                    <textarea
+                      name="marqueeText"
+                      defaultValue={content.marqueeText || ''}
+                      placeholder="उदा. आपुलकी चॅरिटेबल ट्रस्टच्या वतीने रविवार, २५ मार्च रोजी भव्य रक्तदान शिबिराचे आयोजन करण्यात आले आहे. सर्व नागरिकांनी आवर्जून उपस्थित राहावे. 🙏"
+                      style={{ minHeight: 70, resize: 'vertical' }}
+                    />
+                  </div>
+                  <div style={{ display: 'flex', gap: 12, marginTop: 12, flexWrap: 'wrap' }}>
+                    <button className="btn btn-primary" type="submit">
+                      सूचना सेव्ह करा
+                    </button>
+                    {content.marqueeText && (
+                      <button
+                        className="btn btn-danger"
+                        type="submit"
+                        name="marqueeText"
+                        value=""
+                        title="पट्टी बंद करा व मजकूर काढून टाका"
+                      >
+                        पट्टी बंद करा / मजकूर हटवा
+                      </button>
+                    )}
+                  </div>
+                </form>
+              </div>
+
               <div style={{ background: '#fff', borderRadius: 14, padding: '22px 24px', boxShadow: '0 2px 14px rgba(0,0,0,0.06)', marginBottom: 24 }}>
                 <h2 style={{ margin: '0 0 4px', fontSize: 17 }}>मुख्य "हिरो सेक्शन" पार्श्वभूमी (Background) फोटो</h2>
                 <p style={{ fontSize: 12.5, color: '#555', marginBottom: 18 }}>

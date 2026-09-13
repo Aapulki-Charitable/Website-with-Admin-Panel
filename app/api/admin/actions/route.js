@@ -145,6 +145,20 @@ export async function POST(request) {
         return redirectWithFlash(origin, tab, 'माहिती अपडेट झाली.', 'ok');
       }
 
+      case 'update_marquee': {
+        const marqueeText = String(formData.get('marqueeText') || '').trim();
+        const content = await getContent();
+        content.marqueeText = marqueeText;
+        await saveContent(content);
+
+        return redirectWithFlash(
+          origin,
+          'content',
+          marqueeText ? 'सूचना पट्टी अपडेट झाली.' : 'सूचना पट्टी बंद करण्यात आली.',
+          'ok'
+        );
+      }
+
       case 'change_password': {
         const current = String(formData.get('current_password') || '');
         const next = String(formData.get('new_password') || '');

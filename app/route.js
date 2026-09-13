@@ -72,6 +72,23 @@ function renderVideoItems(items) {
     .join('\n');
 }
 
+function renderMarquee(text) {
+  if (!text || typeof text !== 'string' || !text.trim()) {
+    return '';
+  }
+  const clean = escapeHtml(text.trim());
+  const item = `<span class="marquee-item"><span style="font-size:15px;margin-right:4px;">📢</span> ${clean}</span><span class="marquee-sep">✦</span>`;
+  const content = item.repeat(3);
+  return `<div class="site-marquee-bar">
+  <div class="site-marquee-inner">
+    <div class="marquee-track">
+      <div class="marquee-content">${content}</div>
+      <div class="marquee-content" aria-hidden="true">${content}</div>
+    </div>
+  </div>
+</div>`;
+}
+
 export async function GET() {
   const [gallery, videos, content, achievements] = await Promise.all([
     getGallery(),
@@ -107,7 +124,8 @@ export async function GET() {
     .replace('{{POINTS_AROGYA}}', renderPoints(content.points.arogya))
     .replace('{{POINTS_SAMAJ}}', renderPoints(content.points.samaj))
     .replace('{{ACHIEVEMENTS_EXTRA}}', renderAchievementItems(achievements))
-    .replace('{{HERO_BG_IMAGE}}', escapeHtml(content.heroBgImage || 'assets/HERO SECTION IMAGE.jpg'));
+    .replace('{{HERO_BG_IMAGE}}', escapeHtml(content.heroBgImage || 'assets/HERO SECTION IMAGE.jpg'))
+    .replace('{{MARQUEE_BAR}}', renderMarquee(content.marqueeText));
 
   return new Response(html, {
     status: 200,

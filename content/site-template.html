@@ -40,6 +40,70 @@ body {
   overflow-x: hidden;
 }
 
+/* ─── SITE MARQUEE BAR ─── */
+.site-marquee-bar {
+  background: linear-gradient(90deg, #F57C00, #E65100);
+  color: #ffffff;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  z-index: 1002;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  cursor: default;
+}
+
+.site-marquee-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 0;
+  overflow: hidden;
+}
+
+.site-marquee-bar:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
+  flex-shrink: 0;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+.marquee-sep {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* ─── NAVBAR ─── */
 nav {
   position: fixed;
@@ -1855,8 +1919,8 @@ footer {
 /* ─── MOBILE MENU ─── */
 .mobile-menu {
   display: none;
-  position: fixed;
-  top: 80px;
+  position: absolute;
+  top: 100%;
   left: 0; right: 0;
   background: white;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
@@ -1908,7 +1972,6 @@ footer {
   .nav-logo img { height: 50px; }
   .logo-text h1 { font-size: 17px; }
   .logo-text p { font-size: 10px; }
-  .mobile-menu { top: 72px; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
 
@@ -2503,6 +2566,7 @@ footer {
 
 <!-- NAVBAR -->
 <nav id="navbar">
+  {{MARQUEE_BAR}}
   <div class="nav-inner">
     <a href="#" class="nav-logo">
       <img src="assets/transparewnt logo.png" alt="आपुलकी लोगो" style="height:62px;width:auto;object-fit:contain;">
@@ -2525,19 +2589,18 @@ footer {
       <span></span><span></span><span></span>
     </div>
   </div>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMenu()">आपुलकी बद्दल</a>
+    <a href="#gallery" onclick="closeMenu()">गॅलरी</a>
+    <a href="#impact" onclick="closeMenu()">परिणाम</a>
+    <a href="#achievements" onclick="closeMenu()">गौरव आणि सन्मान</a>
+    <a href="#video" onclick="closeMenu()">व्हिडिओ</a>
+    <a href="#karyakarte" onclick="closeMenu()">आमचे कार्यकर्ते</a>
+    <a href="#volunteer" onclick="closeMenu()">स्वयंसेवक</a>
+    <a href="#contact" onclick="closeMenu()">संपर्क</a>
+  </div>
 </nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMenu()">आपुलकी बद्दल</a>
-  <a href="#gallery" onclick="closeMenu()">गॅलरी</a>
-  <a href="#impact" onclick="closeMenu()">परिणाम</a>
-  <a href="#achievements" onclick="closeMenu()">गौरव आणि सन्मान</a>
-  <a href="#video" onclick="closeMenu()">व्हिडिओ</a>
-  <a href="#karyakarte" onclick="closeMenu()">आमचे कार्यकर्ते</a>
-  <a href="#volunteer" onclick="closeMenu()">स्वयंसेवक</a>
-  <a href="#contact" onclick="closeMenu()">संपर्क</a>
-</div>
 
 <!-- HERO -->
 <section class="hero" id="home" style="padding: 60px 24px 80px !important; background-image: url('{{HERO_BG_IMAGE}}');">

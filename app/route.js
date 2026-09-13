@@ -77,8 +77,10 @@ function renderMarquee(text) {
     return '';
   }
   const clean = escapeHtml(text.trim());
-  const item = `<span class="marquee-item"><span style="font-size:15px;margin-right:4px;">📢</span> ${clean}</span><span class="marquee-sep">✦</span>`;
-  const content = item.repeat(3);
+  const item = `<span class="marquee-item"><span class="marquee-icon">📢</span> ${clean}</span><span class="marquee-sep">✦</span>`;
+  // Ensure genuine infinite scrolling by repeating at least 14 times per block (28+ total per cycle)
+  const repeats = Math.max(14, Math.ceil(350 / Math.max(clean.length, 10)));
+  const content = item.repeat(repeats);
   return `<div class="site-marquee-bar">
   <div class="site-marquee-inner">
     <div class="marquee-track">
@@ -97,6 +99,8 @@ export async function GET() {
     getAchievements(),
   ]);
 
+  const hasMarquee = Boolean(content.marqueeText && content.marqueeText.trim());
+
   const shikshan = gallery.filter((g) => g.category === 'shikshan');
   const arogya = gallery.filter((g) => g.category === 'arogya');
   const samaj = gallery.filter((g) => g.category === 'samaj');
@@ -113,6 +117,7 @@ export async function GET() {
   const karyakarteImageHtml = `<img src="${escapeHtml(content.karyakarteImage)}" alt="आमचे कार्यकर्ते">`;
 
   html = html
+    .replace('{{HAS_MARQUEE_CLASS}}', hasMarquee ? 'has-marquee' : '')
     .replace('{{GALLERY_SHIKSHAN}}', renderGalleryItems(shikshan))
     .replace('{{GALLERY_AROGYA}}', renderGalleryItems(arogya))
     .replace('{{GALLERY_SAMAJ}}', renderGalleryItems(samaj))

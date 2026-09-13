@@ -31,7 +31,29 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+:root {
+  --nav-h: 80px;
+  --marquee-h: 0px;
+}
+
+body.has-marquee {
+  --marquee-h: 38px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-h: 72px;
+    --marquee-h: 0px;
+  }
+  body.has-marquee {
+    --marquee-h: 36px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + var(--marquee-h));
+}
 
 body {
   font-family: 'Noto Sans Devanagari', sans-serif;
@@ -48,8 +70,9 @@ body {
   width: 100%;
   position: relative;
   z-index: 1002;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   cursor: default;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .site-marquee-inner {
@@ -58,6 +81,8 @@ body {
   width: 100%;
   padding: 8px 0;
   overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 1.5%, black 98.5%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 1.5%, black 98.5%, transparent);
 }
 
 .site-marquee-bar:hover .marquee-track {
@@ -68,26 +93,31 @@ body {
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: marqueeScroll 28s linear infinite;
+  animation: marqueeScroll 45s linear infinite;
 }
 
 .marquee-content {
   display: flex;
   align-items: center;
-  gap: 32px;
-  padding-right: 32px;
+  gap: 36px;
+  padding-right: 36px;
   flex-shrink: 0;
 }
 
 .marquee-item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 13.5px;
   font-weight: 600;
   color: #ffffff;
   white-space: nowrap;
   letter-spacing: 0.3px;
+}
+
+.marquee-icon {
+  font-size: 15px;
+  vertical-align: middle;
 }
 
 .marquee-sep {
@@ -225,6 +255,11 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  padding-top: calc(var(--nav-h) + var(--marquee-h));
+  padding-bottom: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
 
   background-image: url('assets/HERO\ SECTION\ IMAGE.jpg'); /* replace later */
   background-size: cover;
@@ -2562,11 +2597,10 @@ footer {
 
 </style>
 </head>
-<body>
+<body class="{{HAS_MARQUEE_CLASS}}">
 
 <!-- NAVBAR -->
 <nav id="navbar">
-  {{MARQUEE_BAR}}
   <div class="nav-inner">
     <a href="#" class="nav-logo">
       <img src="assets/transparewnt logo.png" alt="आपुलकी लोगो" style="height:62px;width:auto;object-fit:contain;">
@@ -2589,6 +2623,7 @@ footer {
       <span></span><span></span><span></span>
     </div>
   </div>
+  {{MARQUEE_BAR}}
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" onclick="closeMenu()">आपुलकी बद्दल</a>
@@ -2603,7 +2638,7 @@ footer {
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home" style="padding: 60px 24px 80px !important; background-image: url('{{HERO_BG_IMAGE}}');">
+<section class="hero" id="home" style="background-image: url('{{HERO_BG_IMAGE}}');">
  
   <div class="hero-overlay"></div>
   <div class="hero-content">

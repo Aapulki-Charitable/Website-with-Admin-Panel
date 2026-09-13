@@ -1595,11 +1595,16 @@ section {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 48px;
+  grid-template-columns: 1fr 1.35fr;
+  grid-template-rows: auto auto;
+  column-gap: 36px;
+  row-gap: 20px;
+  align-items: stretch;
 }
 
 .contact-cards {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -1607,97 +1612,138 @@ section {
 
 .contact-card {
   background: white;
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: var(--shadow);
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
+  align-items: center;
+  gap: 18px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
 }
 
 .contact-card-icon {
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
   flex-shrink: 0;
 }
 
-.cc-orange { background: rgba(245,124,0,0.1); }
-.cc-blue { background: rgba(13,110,189,0.1); }
-.cc-green { background: rgba(76,175,80,0.1); }
+.cc-orange { background: #fff3e0; color: #f57c00; }
+.cc-blue { background: #e3f2fd; color: #0288d1; }
+.cc-green { background: #e8f5e9; color: #2e7d32; }
+
+.contact-card-body {
+  flex: 1;
+  min-width: 0;
+}
 
 .contact-card h4 {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-light);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
   margin-bottom: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .contact-card p {
-  font-size: 14px;
-  color: var(--text-dark);
+  font-size: 14.5px;
+  color: #475569;
   line-height: 1.5;
+  margin: 0;
+}
+
+.contact-card p a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-card p a:hover {
+  color: var(--orange);
+}
+
+.contact-map-card {
+  grid-column: 2;
+  grid-row: 1;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+}
+
+.contact-map-card iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
+  display: block;
 }
 
 .social-row {
+  grid-column: 1;
+  grid-row: 2;
   display: flex;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 12px;
+  align-items: center;
 }
 
 .social-btn {
-  width: 40px; height: 40px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   background: white;
-  border: 1px solid var(--grey-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
   text-decoration: none;
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .social-btn:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--orange);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-.map-placeholder {
-  border-radius: 20px;
-  overflow: hidden;
-  height: 260px;
-  background: linear-gradient(135deg, #e8f4fd, #b3d9f7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  margin-bottom: 16px;
-  box-shadow: var(--shadow);
-}
-
-.whatsapp-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #25D366;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s;
-  justify-content: center;
-}
-
-.whatsapp-btn:hover {
-  background: #128C7E;
-  transform: translateY(-2px);
+@media (max-width: 860px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+  .contact-cards {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .social-row {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 6px;
+  }
+  .contact-map-card {
+    grid-column: 1;
+    grid-row: 3;
+    height: 320px;
+    min-height: 280px;
+  }
+  .contact-map-card iframe {
+    min-height: 280px;
+  }
 }
 
 /* ─── FOOTER ─── */
@@ -1870,8 +1916,7 @@ footer {
 
   .about-grid,
   .volunteer-grid,
-  .donation-grid,
-  .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .donation-grid { grid-template-columns: 1fr; gap: 36px; }
 
   .objectives-grid { grid-template-columns: repeat(2, 1fr); }
   .programs-grid { grid-template-columns: 1fr; }
@@ -2956,72 +3001,54 @@ footer {
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="section-inner">
-    <div class="section-header fade-in">
-      <div class="section-label blue">संपर्क</div>
-      <div class="divider blue"></div>
+    <div class="section-header fade-in" style="text-align:center;margin-bottom:48px;">
+      <div class="section-label blue" style="margin:0 auto 12px;display:inline-block;">संपर्क</div>
+      <div class="divider blue" style="margin:0 auto 16px;"></div>
       <h2 class="section-title">आमच्याशी संपर्क साधा</h2>
+      <p class="section-sub" style="margin:0 auto;">आपले प्रश्न, सूचना किंवा सहकार्याबाबत आम्हाला नक्की संपर्क करा.</p>
     </div>
     <div class="contact-grid fade-in">
-      <div>
-        <div class="contact-cards">
-          <div class="contact-card">
-            <div class="contact-card-icon cc-orange"><span class="material-symbols-outlined">location_on</span></div>
-            <div>
-              <h4>पत्ता</h4>
-              <p>Shop No. 11, Regency Anantam Commercial 2,<br>Dawadi, Dombivli East, Maharashtra</p>
-            </div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-card-icon cc-blue"><span class="material-symbols-outlined">call</span></div>
-            <div>
-              <h4>मोबाईल</h4>
-              <p><a href="tel:9819716831" style="color:var(--text-dark);text-decoration:none;">9819716831</a></p>
-            </div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-card-icon cc-green"><span class="material-symbols-outlined">mail</span></div>
-            <div>
-              <h4>ईमेल</h4>
-              <p><a href="mailto:Aapulkicharitabletrust2K23@gmail.com" style="color:var(--text-dark);text-decoration:none;word-break:break-all;">Aapulkicharitabletrust2K23@gmail.com</a></p>
-            </div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-card-icon cc-orange"><span class="material-symbols-outlined">language</span></div>
-            <div>
-              <h4>वेबसाईट</h4>
-              <p><a href="https://www.aapulkicharitabletrust.com" target="_blank" style="color:var(--blue);text-decoration:none;">www.aapulkicharitabletrust.com</a></p>
-            </div>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon cc-orange"><span class="material-symbols-outlined">location_on</span></div>
+          <div class="contact-card-body">
+            <h4>पत्ता</h4>
+            <p>Shop No. 11, Regency Anantam Commercial 2,<br>Dawadi, Dombivli East, Maharashtra</p>
           </div>
         </div>
-        <div class="social-row">
-          <a href="https://www.facebook.com/share/192aR3uNXF/" target="_blank" class="social-btn" title="Facebook"><img src="https://cdn.simpleicons.org/facebook" alt="Facebook" width="20" height="20"></a>
-          <a href="https://instagram.com/aapulki.trust" target="_blank" class="social-btn" title="Instagram @aapulki.trust"><img src="https://cdn.simpleicons.org/instagram" alt="Instagram" width="20" height="20"></a>
-          <a href="https://wa.me/919819716831" target="_blank" class="social-btn" title="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp" alt="WhatsApp" width="20" height="20"></a>
+        <div class="contact-card">
+          <div class="contact-card-icon cc-blue"><span class="material-symbols-outlined">call</span></div>
+          <div class="contact-card-body">
+            <h4>मोबाईल</h4>
+            <p><a href="tel:9819716831">9819716831</a></p>
+          </div>
         </div>
-        <div style="margin-top:20px;">
-          <a href="https://wa.me/919819716831" class="whatsapp-btn">
-            <img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" width="18" height="18" style="vertical-align:middle;margin-right:6px;"> WhatsApp वर संपर्क करा
-          </a>
+        <div class="contact-card">
+          <div class="contact-card-icon cc-green"><span class="material-symbols-outlined">mail</span></div>
+          <div class="contact-card-body">
+            <h4>ईमेल</h4>
+            <p><a href="mailto:Aapulkicharitabletrust2K23@gmail.com">Aapulkicharitabletrust2K23@gmail.com</a></p>
+          </div>
         </div>
       </div>
-      <div>
-        <div class="map-placeholder"><span class="material-symbols-outlined">map</span></div>
-        <div class="form-card" style="padding:28px;">
-          <h3 style="font-size:17px;margin-bottom:20px;">संदेश पाठवा</h3>
-          <div class="form-group">
-            <label>नाव</label>
-            <input type="text" placeholder="आपले नाव">
-          </div>
-          <div class="form-group">
-            <label>मोबाईल / ईमेल</label>
-            <input type="text" placeholder="संपर्क माहिती">
-          </div>
-          <div class="form-group">
-            <label>संदेश</label>
-            <textarea placeholder="आपला संदेश..." style="min-height:80px;"></textarea>
-          </div>
-          <button class="btn-submit" onclick="submitContact()"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:6px;">send</span>संदेश पाठवा</button>
-        </div>
+      <div class="contact-map-card">
+        <iframe
+          src="https://maps.google.com/maps?q=Shop+No.+11,+Regency+Anantam+Commercial+2,+Dawadi,+Dombivli+East,+Maharashtra+421201&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="आपुलकी चॅरिटेबल ट्रस्ट स्थान">
+        </iframe>
+      </div>
+      <div class="social-row">
+        <a href="https://www.facebook.com/share/192aR3uNXF/" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook">
+          <img src="https://cdn.simpleicons.org/facebook/1877F2" alt="Facebook" width="22" height="22">
+        </a>
+        <a href="https://instagram.com/aapulki.trust" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram @aapulki.trust">
+          <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram" width="22" height="22">
+        </a>
+        <a href="https://wa.me/919819716831" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp">
+          <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" width="22" height="22">
+        </a>
       </div>
     </div>
   </div>
@@ -3318,9 +3345,6 @@ function submitVolunteer() {
       window.location.href = waUrl;
     }
   }
-}
-function submitContact() {
-  alert('आपला संदेश मिळाला. आम्ही लवकरच उत्तर देऊ. धन्यवाद! 🙏');
 }
 </script>
 

@@ -3248,9 +3248,12 @@ if ('IntersectionObserver' in window) {
 function filterGallery(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
-  document.querySelectorAll('.gallery-item, .initiative-image-card').forEach(item => {
-    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'block' : 'none';
+  document.querySelectorAll('.initiative-panel').forEach(panel => {
+    panel.style.display = (cat === 'all' || panel.dataset.cat === cat) ? 'block' : 'none';
   });
+  if (typeof window.refreshGalleryOrientation === 'function') {
+    window.refreshGalleryOrientation();
+  }
 }
 
 // ─── DONATION TIER SELECTOR ───
@@ -3404,6 +3407,9 @@ function toggleVideo(video) {
     }
   }
   cards.forEach(tagOrientation);
+  window.refreshGalleryOrientation = function(){
+    cards.forEach(tagOrientation);
+  };
 
   // Lightbox (reuses existing #lightbox markup + its inline buttons)
   var lb    = document.getElementById('lightbox');

@@ -39,7 +39,7 @@ function renderAchievementItems(items) {
       const media = `<div class="award-image-box"><img src="${escapeHtml(
         a.image
       )}" alt="${titleText}"></div>`;
-      const text = `<div>
+      const text = `<div class="award-text-content">
         <div class="award-badge-tag"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">military_tech</span> ${tagText}</div>
         <h3 class="award-title">${titleText}</h3>
         ${descHtml}

@@ -847,9 +847,11 @@ section {
 
 .award-grid {
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: 360px minmax(0, 1fr);
   gap: 48px;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .award-img {
@@ -883,6 +885,9 @@ section {
   color: var(--orange-dark);
   margin-bottom: 10px;
   line-height: 1.3;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .award-recipient {
@@ -890,13 +895,22 @@ section {
   color: var(--text-mid);
   margin-bottom: 16px;
   font-weight: 500;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .award-desc {
   font-size: 14px;
   color: var(--text-light);
   line-height: 1.7;
-  max-width: 540px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: normal;
+  white-space: pre-line;
 }
 
 .award-meta {
@@ -914,9 +928,16 @@ section {
   color: var(--text-mid);
 }
 
+.award-text-content {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* Alternating award rows: odd rows = image left, even rows = image right */
 .award-grid.reverse {
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: minmax(0, 1fr) 360px;
 }
 
 /* ─── FIXED HORIZONTAL IMAGE BOX WITH BLURRED PORTRAIT FILL ─── */
@@ -1821,6 +1842,19 @@ footer {
   .objectives-grid { grid-template-columns: repeat(3, 1fr); }
   .programs-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .award-grid { grid-template-columns: 320px minmax(0, 1fr); gap: 32px; }
+  .award-grid.reverse { grid-template-columns: minmax(0, 1fr) 320px; gap: 32px; }
+  .award-image-box { width: 320px; height: 230px; }
+}
+
+@media (max-width: 860px) {
+  .award-showcase { padding: 32px 20px; }
+  .award-grid,
+  .award-grid.reverse { grid-template-columns: 1fr; gap: 24px; }
+  .award-image-box { width: 100%; max-width: 440px; height: 230px; margin: 0 auto; }
+  .award-grid.reverse .award-image-box,
+  .award-grid.reverse .award-media,
+  .award-grid.reverse .award-img { order: -1; }
 }
 
 @media (max-width: 768px) {
@@ -2679,7 +2713,7 @@ footer {
               <div class="award-image-box">
                 <img src="assets/awards.jpg" alt="सह्याद्री रत्न पुरस्कार २०२५">
               </div>
-              <div>
+              <div class="award-text-content">
                 <div class="award-badge-tag">राज्यस्तरीय पुरस्कार • २०२५</div>
                 <h3 class="award-title">सह्याद्री रत्न पुरस्कार २०२५</h3>
                 <div class="award-recipient">
@@ -2702,7 +2736,7 @@ footer {
           <div class="award-showcase">
             <div class="award-grid reverse">
               <!-- TEXT -->
-              <div>
+              <div class="award-text-content">
                 <div class="award-badge-tag"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">newspaper</span> ठाणे वार्ता • २६ जून २०२५</div>
                 <h3 class="award-title">
                   विद्यार्थ्यांना सायकली व शैक्षणिक साहित्याचे वाटप

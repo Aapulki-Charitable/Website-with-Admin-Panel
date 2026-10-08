@@ -1,5 +1,6 @@
 export const metadata = {
   title: 'आपुलकी चॅरिटेबल ट्रस्ट',
+  icons: { icon: '/assets/apulki logo.png' },
 };
 
 export default function RootLayout({ children }) {

@@ -7,6 +7,9 @@ import {
   saveVideos,
   getAchievements,
   saveAchievements,
+  getCampaigns,
+  saveCampaigns,
+  normalizeFormLink,
   newId,
 } from '../../../../lib/blob';
 
@@ -50,6 +53,31 @@ export async function POST(request) {
       description: (description || '').trim(),
     });
     await saveAchievements(achievements);
+    return NextResponse.json({ ok: true });
+  }
+
+  if (type === 'campaign') {
+    if (!url) {
+      return NextResponse.json({ error: 'मोहिमेसाठी फोटो आवश्यक आहे.' }, { status: 400 });
+    }
+    const formLink = normalizeFormLink(data.formLink);
+    if (formLink === null) {
+      return NextResponse.json(
+        { error: 'फॉर्म लिंक https:// ने सुरू होणारी वैध लिंक असावी.' },
+        { status: 400 }
+      );
+    }
+    const campaigns = await getCampaigns();
+    campaigns.push({
+      id: newId('cp'),
+      image: url,
+      socialCaption: String(data.socialCaption || '').trim(),
+      websiteText: String(data.websiteText || '').trim(),
+      formLink,
+      postWebsite: Boolean(data.postWebsite),
+      createdAt: new Date().toISOString(),
+    });
+    await saveCampaigns(campaigns);
     return NextResponse.json({ ok: true });
   }
 

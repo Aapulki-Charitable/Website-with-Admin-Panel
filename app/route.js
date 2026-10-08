@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { getGallery, getVideos, getContent, getAchievements } from '../lib/blob';
+import { getGallery, getVideos, getContent, getAchievements, getCampaigns } from '../lib/blob';
 
 export const dynamic = 'force-dynamic';
 
@@ -91,13 +91,44 @@ function renderMarquee(text) {
 </div>`;
 }
 
+function renderCampaignDropdown(campaigns) {
+  if (campaigns.length === 0) {
+    return '<div class="campaign-dd-empty">सध्या कोणतीही मोहीम सुरू नाही.</div>';
+  }
+  return campaigns
+    .map(
+      (c) => `<button type="button" class="campaign-dd-item" onclick="openCampaign('${escapeHtml(c.id)}')">
+        <img src="${escapeHtml(c.image)}" alt="" loading="lazy">
+        ${c.websiteText ? `<span class="campaign-dd-text">${escapeHtml(c.websiteText)}</span>` : ''}
+      </button>`
+    )
+    .join('\n');
+}
+
+// Inline JSON for the campaign pop-up; escape "<" so text can't close the <script> tag.
+function renderCampaignsJson(campaigns) {
+  const data = campaigns.map((c) => ({
+    id: c.id,
+    image: c.image,
+    websiteText: c.websiteText || '',
+    formLink: c.formLink || '',
+  }));
+  return JSON.stringify(data).replace(/</g, '\\u003c');
+}
+
 export async function GET() {
-  const [gallery, videos, content, achievements] = await Promise.all([
+  const [gallery, videos, content, achievements, campaignsRaw] = await Promise.all([
     getGallery(),
     getVideos(),
     getContent(),
     getAchievements(),
+    getCampaigns(),
   ]);
+
+  // Newest first; only campaigns marked "post on website".
+  const campaigns = (Array.isArray(campaignsRaw) ? campaignsRaw : [])
+    .filter((c) => c.postWebsite)
+    .reverse();
 
   const hasMarquee = Boolean(content.marqueeText && content.marqueeText.trim());
 
@@ -130,7 +161,13 @@ export async function GET() {
     .replace('{{POINTS_SAMAJ}}', renderPoints(content.points.samaj))
     .replace('{{ACHIEVEMENTS_EXTRA}}', renderAchievementItems(achievements))
     .replace('{{HERO_BG_IMAGE}}', escapeHtml(content.heroBgImage || 'assets/HERO SECTION IMAGE.jpg'))
-    .replace('{{MARQUEE_BAR}}', renderMarquee(content.marqueeText));
+    .replace('{{MARQUEE_BAR}}', renderMarquee(content.marqueeText))
+    .replace(
+      '{{CAMPAIGN_BADGE}}',
+      campaigns.length ? `<span class="nav-campaign-badge">${campaigns.length}</span>` : ''
+    )
+    .replace('{{CAMPAIGN_DROPDOWN}}', renderCampaignDropdown(campaigns))
+    .replace('{{CAMPAIGNS_JSON}}', renderCampaignsJson(campaigns));
 
   return new Response(html, {
     status: 200,

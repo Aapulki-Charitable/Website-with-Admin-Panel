@@ -1,13 +1,15 @@
 import { redirect } from 'next/navigation';
 import { isLoggedIn } from '../../../lib/auth';
-import { getGallery, getVideos, getContent, getAchievements } from '../../../lib/blob';
+import { getGallery, getVideos, getContent, getAchievements, getCampaigns } from '../../../lib/blob';
 import AddMediaForm from '../../../components/AddMediaForm';
 import SingleImageForm from '../../../components/SingleImageForm';
+import CampaignForm from '../../../components/CampaignForm';
 
 export const dynamic = 'force-dynamic';
 
 const TABS = {
   content: { label: 'साईट प्रतिमा व मजकूर', icon: 'image' },
+  campaigns: { label: 'मोहीम', icon: 'campaign' },
   shikshan: { label: 'शिक्षण', icon: 'menu_book' },
   arogya: { label: 'आरोग्य', icon: 'local_hospital' },
   samaj: { label: 'समाज कल्याण', icon: 'handshake' },
@@ -25,15 +27,17 @@ export default async function DashboardPage({ searchParams }) {
   const flash = searchParams?.flash;
   const flashType = searchParams?.flashType === 'error' ? 'error' : 'ok';
 
-  const [galleryRaw, videosRaw, contentRaw, achievementsRaw] = await Promise.all([
+  const [galleryRaw, videosRaw, contentRaw, achievementsRaw, campaignsRaw] = await Promise.all([
     getGallery(),
     getVideos(),
     getContent(),
     getAchievements(),
+    getCampaigns(),
   ]);
   const gallery = Array.isArray(galleryRaw) ? galleryRaw : [];
   const videos = Array.isArray(videosRaw) ? videosRaw : [];
   const achievements = Array.isArray(achievementsRaw) ? achievementsRaw : [];
+  const campaigns = (Array.isArray(campaignsRaw) ? campaignsRaw : []).slice().reverse();
   const content = {
     heroBgImage: 'assets/HERO SECTION IMAGE.jpg',
     aboutImage: 'assets/253 donors.png',
@@ -391,6 +395,99 @@ export default async function DashboardPage({ searchParams }) {
                     <SingleImageForm field="karyakarteImage" tab="content" />
                   </div>
                 </div>
+              </div>
+            </>
+          )}
+
+          {activeTab === 'campaigns' && (
+            <>
+              <div style={{ background: '#fff', borderRadius: 14, padding: '22px 24px', boxShadow: '0 2px 14px rgba(0,0,0,0.06)', marginBottom: 24 }}>
+                <h2 style={{ margin: '0 0 4px', fontSize: 17 }}>नवीन मोहीम / उपक्रम जोडा</h2>
+                <p style={{ fontSize: 12.5, color: '#555', marginBottom: 18 }}>
+                  वेबसाईटवर पोस्ट केलेल्या मोहिमा नॅव्हबारमधील &quot;मोहीम&quot; मेनूत दिसतात. सर्वात नवीन मोहीम वेबसाईट उघडल्यानंतर ६ सेकंदांनी पॉप-अपमध्ये दाखवली जाते.
+                </p>
+                <CampaignForm tab="campaigns" />
+              </div>
+
+              <div style={{ background: '#fff', borderRadius: 14, padding: '22px 24px', boxShadow: '0 2px 14px rgba(0,0,0,0.06)' }}>
+                <h2 style={{ margin: '0 0 4px', fontSize: 17 }}>सध्याच्या मोहिमा ({campaigns.length})</h2>
+                {campaigns.length === 0 ? (
+                  <div style={{ fontSize: 13, color: '#555', padding: '16px 0', textAlign: 'center' }}>
+                    अजून कोणतीही मोहीम जोडलेली नाही.
+                  </div>
+                ) : (
+                  <div className="grid">
+                    {campaigns.map((item) => (
+                      <div className="item-card" key={item.id}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img className="thumb" src={item.image} alt="" style={{ objectFit: 'contain' }} />
+                        <div className="body">
+                          <span
+                            style={{
+                              alignSelf: 'flex-start',
+                              padding: '3px 10px',
+                              borderRadius: 50,
+                              fontSize: 11,
+                              fontWeight: 600,
+                              background: item.postWebsite ? '#e7f6e8' : '#f1f2f4',
+                              color: item.postWebsite ? '#256029' : '#777',
+                            }}
+                          >
+                            {item.postWebsite ? '● वेबसाईटवर दिसत आहे' : '○ वेबसाईटवर लपवलेली'}
+                          </span>
+                          <form method="POST" action="/api/admin/actions">
+                            <input type="hidden" name="action" value="edit_campaign" />
+                            <input type="hidden" name="id" value={item.id} />
+                            <input type="hidden" name="tab" value="campaigns" />
+
+                            <div style={{ marginBottom: 6 }}>
+                              <label style={{ fontSize: 11, fontWeight: 600, color: '#555', display: 'block', marginBottom: 2 }}>
+                                वेबसाईटवरील मजकूर
+                              </label>
+                              <textarea name="websiteText" defaultValue={item.websiteText || ''} style={{ width: '100%', minHeight: 52, resize: 'vertical', padding: '6px 8px', borderRadius: 6, border: '1.5px solid #e2e2e6', fontSize: 12, boxSizing: 'border-box' }} />
+                            </div>
+
+                            <div style={{ marginBottom: 6 }}>
+                              <label style={{ fontSize: 11, fontWeight: 600, color: '#555', display: 'block', marginBottom: 2 }}>
+                                Instagram / Facebook कॅप्शन
+                              </label>
+                              <textarea name="socialCaption" defaultValue={item.socialCaption || ''} style={{ width: '100%', minHeight: 52, resize: 'vertical', padding: '6px 8px', borderRadius: 6, border: '1.5px solid #e2e2e6', fontSize: 12, boxSizing: 'border-box' }} />
+                            </div>
+
+                            <div style={{ marginBottom: 6 }}>
+                              <label style={{ fontSize: 11, fontWeight: 600, color: '#555', display: 'block', marginBottom: 2 }}>
+                                नोंदणी फॉर्म लिंक
+                              </label>
+                              <input
+                                type="url"
+                                name="formLink"
+                                defaultValue={item.formLink || ''}
+                                placeholder="https://forms.gle/..."
+                                style={{ width: '100%', padding: '6px 8px', borderRadius: 6, border: '1.5px solid #e2e2e6', fontSize: 12, boxSizing: 'border-box' }}
+                              />
+                            </div>
+
+                            <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, marginBottom: 6, cursor: 'pointer' }}>
+                              <input type="checkbox" name="postWebsite" defaultChecked={item.postWebsite} /> वेबसाईटवर दाखवा
+                            </label>
+
+                            <button className="btn btn-outline" type="submit" style={{ width: '100%', marginTop: 2 }}>
+                              सेव्ह करा
+                            </button>
+                          </form>
+                          <form method="POST" action="/api/admin/actions">
+                            <input type="hidden" name="action" value="delete_campaign" />
+                            <input type="hidden" name="id" value={item.id} />
+                            <input type="hidden" name="tab" value="campaigns" />
+                            <button className="btn btn-danger" type="submit" style={{ width: '100%', marginTop: 4 }}>
+                              काढा
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </>
           )}

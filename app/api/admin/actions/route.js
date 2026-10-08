@@ -9,6 +9,9 @@ import {
   saveAchievements,
   getContent,
   saveContent,
+  getCampaigns,
+  saveCampaigns,
+  normalizeFormLink,
   deleteFileIfOwned,
 } from '../../../../lib/blob';
 
@@ -113,6 +116,37 @@ export async function POST(request) {
         await saveAchievements(achievements.filter((a) => a.id !== id));
 
         return redirectWithFlash(origin, tab, 'नोंद काढून टाकली.', 'ok');
+      }
+
+      case 'edit_campaign': {
+        const id = String(formData.get('id') || '');
+        const formLink = normalizeFormLink(formData.get('formLink'));
+        if (formLink === null) {
+          return redirectWithFlash(origin, tab, 'फॉर्म लिंक https:// ने सुरू होणारी वैध लिंक असावी.', 'error');
+        }
+
+        const campaigns = await getCampaigns();
+        const item = campaigns.find((c) => c.id === id);
+        if (!item) return redirectWithFlash(origin, tab, 'मोहीम सापडली नाही.', 'error');
+        item.socialCaption = String(formData.get('socialCaption') || '').trim();
+        item.websiteText = String(formData.get('websiteText') || '').trim();
+        item.formLink = formLink;
+        item.postWebsite = formData.get('postWebsite') === 'on';
+        await saveCampaigns(campaigns);
+
+        return redirectWithFlash(origin, tab, 'मोहीम अपडेट झाली.', 'ok');
+      }
+
+      case 'delete_campaign': {
+        const id = String(formData.get('id') || '');
+        const campaigns = await getCampaigns();
+        const item = campaigns.find((c) => c.id === id);
+        if (!item) return redirectWithFlash(origin, tab, 'मोहीम सापडली नाही.', 'error');
+
+        await deleteFileIfOwned(item.image);
+        await saveCampaigns(campaigns.filter((c) => c.id !== id));
+
+        return redirectWithFlash(origin, tab, 'मोहीम काढून टाकली.', 'ok');
       }
 
       case 'update_points': {
